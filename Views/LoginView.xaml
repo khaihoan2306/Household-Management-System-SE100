@@ -5,8 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Household_Management_System.Views"
         mc:Ignorable="d"
-        Title="LoginView" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Login" Height="500" Width="350">
     <Grid>
-        
+        <Rectangle Height="280" VerticalAlignment="Top">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5, 1" StartPoint="0.5, 0">
+                    <GradientStop Color="#7EEA6C" />
+                    <GradientStop Color="#4CE632" Offset="0.5"/>
+                    <GradientStop Color="#2fa61b" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Image Source="../Assets/Images/logo.png" Width="100" Height="100" 
+               VerticalAlignment="Top"
+               Margin="20"/>
+        <TextBlock 
+            Text="HOUSEHOLD MANAGEMENT SYSTEM" 
+            FontSize="18" HorizontalAlignment="Center" 
+            Margin="0 125" 
+            Foreground="#08329D"
+            FontWeight="SemiBold"
+            />
+        <Rectangle Width="280" Height="200" Fill="White" VerticalAlignment="Bottom" Margin="0, 100" RenderTransformOrigin="0.5,0.5" RadiusY="12.545" RadiusX="12.545">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.229"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Effect>
+                <DropShadowEffect 
+                    Color="#FFB4B4B4"
+                    Direction="0"
+                    BlurRadius="15"
+                    RenderingBias="Quality"
+                    />
+            </Rectangle.Effect>
+        </Rectangle>
+        <Grid Width="280" Height="200" VerticalAlignment="Bottom" Margin="0 100">
+            <TextBlock 
+                Text="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top"
+                Margin="25" Foreground="Black" FontSize="18"
+                />
+            <StackPanel VerticalAlignment="Center" Margin="10">
+                <TextBox 
+                    materialDesign:HintAssist.Hint="Username"                        
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"                        
+                    Margin="0, 10"
+                    />
+                <PasswordBox
+                    materialDesign:HintAssist.Hint="Password"                        
+                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"                        
+                    Margin="0, 10"
+                    />
+            </StackPanel>
+        </Grid>
+        <Button VerticalAlignment="Bottom" Margin="0, 30" Width="150" Content="LOGIN" Background="#7EEA6C" 
+                BorderBrush="#08329D" Foreground="#08329D" FontWeight="SemiBold"/>
     </Grid>
 </Window>
