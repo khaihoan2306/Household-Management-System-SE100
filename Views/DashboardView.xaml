@@ -79,6 +79,7 @@
                         <TextBlock Margin="0,10,0,0" FontSize="14" Text="Cắt khẩu" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Center" TextAlignment="Center" Width="69"/>
                     </StackPanel>
                 </Button>
+                <TextBlock TextWrapping="Wrap" Text="Hộ khẩu" Margin="22.1,0,167.3,178.8" FontSize="24" Width="89" Height="26" FontFamily="Roboto" Background="White"/>
 
             </Grid>
         </Border>
