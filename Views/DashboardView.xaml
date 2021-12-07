@@ -48,7 +48,8 @@
                     </TransformGroup>
                 </Separator.LayoutTransform>
             </Separator>
-            <MenuItem Header="Đăng xuất" FontSize="24" Click="MenuItem_Click" Foreground="Red" HorizontalContentAlignment="Stretch" Padding="0" Height="Auto" Margin="840,0,4,0"/>
+            <MenuItem Header="Trợ giúp" FontSize="24" Click="MenuItem_Click" Foreground="Black" HorizontalContentAlignment="Stretch" Padding="0" Height="Auto" Margin="11,0,4,0"/>
+            <MenuItem Header="Đăng xuất" FontSize="24" Click="MenuItem_Click" Foreground="Red" HorizontalContentAlignment="Stretch" Padding="0" Height="Auto" Margin="730,0,4,0"/>
         </Menu>
         <Border Margin="75,71,926,748">
             <Grid>
