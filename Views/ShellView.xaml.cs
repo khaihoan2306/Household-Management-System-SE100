@@ -15,23 +15,13 @@ using System.Windows.Shapes;
 namespace Household_Management_System.Views
 {
     /// <summary>
-    /// Interaction logic for DashboardView.xaml
+    /// Interaction logic for ShellView.xaml
     /// </summary>
-    public partial class DashboardView : UserControl
+    public partial class ShellView : Window
     {
-        public DashboardView()
+        public ShellView()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

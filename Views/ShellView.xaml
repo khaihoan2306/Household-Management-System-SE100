@@ -1,0 +1,46 @@
+﻿<Window x:Class="Household_Management_System.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Household_Management_System.Views"
+        mc:Ignorable="d"
+        Title="ShellView" Height="810" Width="1540" WindowState="Maximized">
+    <Grid Background="White">
+        <DockPanel>
+            <Menu Height="28" DockPanel.Dock="Top" Background="#7EEA6C">
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <DockPanel HorizontalAlignment="Stretch"/>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+                <MenuItem Height="28" Header="_Hệ Thống" FontSize="14">
+                    <MenuItem Header="_Open"/>
+                    <MenuItem Header="_Close"/>
+                    <MenuItem Header="_Save"/>
+                </MenuItem>
+                <MenuItem Height="28" Header="_Danh mục" FontSize="14">
+                    <MenuItem Header="_Open"/>
+                    <MenuItem Header="_Close"/>
+                    <MenuItem Header="_Save"/>
+                </MenuItem>
+                <MenuItem Height="28" Header="Báo cáo" FontSize="14">
+                    <MenuItem Header="_Open"/>
+                    <MenuItem Header="_Close"/>
+                    <MenuItem Header="_Save"/>
+                </MenuItem>
+                <MenuItem Height="28" Header="Trợ giúp" FontSize="14">
+                    <MenuItem Header="_Open"/>
+                    <MenuItem Header="_Close"/>
+                    <MenuItem Header="_Save"/>
+                </MenuItem>
+                <MenuItem Height="28" Header="Đăng xuất" FontSize="14" HorizontalAlignment="Right" Foreground="Red"/>
+
+            </Menu>
+            <StatusBar DockPanel.Dock="Bottom" Background="#7EEA6C">
+                <Label Content="User: Lê Khải Hoàn, Chức vụ: Trưởng Công an Phường" FontSize="14" Foreground="#08329D" />
+            </StatusBar>
+            <ContentControl x:Name="ActiveItem" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </DockPanel>
+    </Grid>
+</Window>
