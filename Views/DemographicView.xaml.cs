@@ -17,7 +17,7 @@ namespace Household_Management_System.Views
     /// <summary>
     /// Interaction logic for DemographicView.xaml
     /// </summary>
-    public partial class DemographicView : Window
+    public partial class DemographicView : UserControl
     {
         public DemographicView()
         {
