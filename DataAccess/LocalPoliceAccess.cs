@@ -12,14 +12,14 @@ using System.Windows;
 
 namespace Household_Management_System.DataAccess
 {
-    public class SqliteDataAccess
+    public class LocalPoliceAccess
     {
-        public static List<LocalPoliceModel> LoadPolice(string username)
+        public static LocalPoliceModel LoadPolice(string username)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 var output = cnn.Query<LocalPoliceModel>("select * from LocalPolice where Username='"+username+"'", new DynamicParameters());
-                return output.ToList();
+                return output.First();
             }
         }
         private static string LoadConnectionString(string id = "Default")
