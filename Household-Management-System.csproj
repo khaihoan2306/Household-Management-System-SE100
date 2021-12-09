@@ -70,6 +70,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -92,8 +93,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataAccess\SqliteDataAccess.cs" />
+    <Compile Include="DataAccess\LocalPoliceAccess.cs" />
+    <Compile Include="DataAccess\ProvinceInfoAccess.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
+    <Compile Include="Models\LocalAddressModel.cs" />
     <Compile Include="Models\LocalPoliceModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />

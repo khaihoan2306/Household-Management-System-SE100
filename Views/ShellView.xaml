@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Household_Management_System.Views"
         mc:Ignorable="d"
+        ResizeMode="CanMinimize" 
         Title="ShellView" Height="810" Width="1540" WindowState="Maximized">
     <Grid Background="White">
         <DockPanel>
@@ -34,11 +35,11 @@
                     <MenuItem Header="_Close"/>
                     <MenuItem Header="_Save"/>
                 </MenuItem>
-                <MenuItem Height="28" Header="Đăng xuất" FontSize="14" HorizontalAlignment="Right" Foreground="Red"/>
+                <MenuItem x:Name="LogOut" Height="28" Header="Đăng xuất" FontSize="14" HorizontalAlignment="Right" Foreground="Red"/>
 
             </Menu>
             <StatusBar DockPanel.Dock="Bottom" Background="#7EEA6C">
-                <Label Content="User: Lê Khải Hoàn, Chức vụ: Trưởng Công an Phường" FontSize="14" Foreground="#08329D" />
+                <Label x:Name="UserInfo" Content="User: Lê Khải Hoàn, Chức vụ: Trưởng Công an Phường" FontSize="14" Foreground="#08329D" />
             </StatusBar>
             <ContentControl x:Name="ActiveItem" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </DockPanel>
