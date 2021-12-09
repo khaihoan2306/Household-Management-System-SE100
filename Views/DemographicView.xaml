@@ -13,7 +13,7 @@
             <ComboBox Text="Khu phố/Thôn" FontSize="18" Width="134" Background="White" Margin="39,0,0,0" BorderThickness="1" Padding="2,4,0,4">
                 <ComboBoxItem>Khu phố/Thôn</ComboBoxItem>
             </ComboBox>
-            <ComboBox Text="Tổ dân phố/Xóm" Width="154" FontSize="18" Background="White" BorderThickness="1" Margin="24,0,0,0" Padding="2,4,0,4">
+            <ComboBox Text="Tổ dân phố/Xóm" Width="157" FontSize="18" Background="White" BorderThickness="1" Margin="24,0,0,0" Padding="2,4,0,4">
                 <ComboBoxItem Content="Tổ dân phố/Xóm"/>
             </ComboBox>
             <TextBox TextWrapping="Wrap" Width="423" Background="White" FontSize="18" Margin="26,0,0,0"/>
@@ -30,13 +30,13 @@
             <Button Style="{x:Null}" Background="{x:Null}" BorderBrush="Black" Foreground="Black" Margin="982,0,0,0">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="../Assets/Images/detail.png" Width="47" Height="47"/>
-                    <TextBlock FontSize="20" Text="Xem chi tiết" Margin="0" Padding="0,10,0,0"/>
+                    <TextBlock FontSize="20" Text="Xem chi tiết" Margin="5,0,0,0" Padding="0,10,0,0"/>
                 </StackPanel>
             </Button>
             <Button Style="{x:Null}" Background="{x:Null}" BorderBrush="Black" Foreground="Black" Margin="8,0,0,0">
                 <StackPanel Orientation="Horizontal" Margin="0">
                     <Image Source="../Assets/Images/print.png" Width="47" Height="47"/>
-                    <TextBlock FontSize="20" Text="In danh sách" Margin="0" Padding="0,10,0,0"/>
+                    <TextBlock FontSize="20" Text="In danh sách" Margin="5,0,0,0" Padding="0,10,0,0"/>
                 </StackPanel>
             </Button>
 
