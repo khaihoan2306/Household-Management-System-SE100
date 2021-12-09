@@ -94,7 +94,7 @@
                 </Border>
                 <Border Width="95" Height="120" BorderThickness="2" BorderBrush="Black" CornerRadius="10"
                     VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5 0 20 0">
-                    <Button Style="{x:Null}" BorderBrush="Transparent" Background="Transparent">
+                    <Button x:Name="Setting" Style="{x:Null}" BorderBrush="Transparent" Background="Transparent">
                         <StackPanel>
                             <Image Source="../Assets/Images/setting.png" Width="64" />
                             <TextBlock FontSize="14" TextAlignment="Center">Cài đặt<LineBreak/> Tài khoản</TextBlock>
@@ -107,7 +107,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel>
-            <Border Height="500" Width="1440" BorderBrush="Black" 
+            <Border Height="500" BorderBrush="Black" 
                     CornerRadius="10" BorderThickness="1" Margin="0 15 0 0">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -125,11 +125,11 @@
                                FontWeight="Bold" Foreground="#08329D" HorizontalAlignment="Center" />
                         
                     </StackPanel>
-                    <TextBlock Grid.Row="1" Grid.Column="1" Text="Ngày: 08/12/2021" FontSize="20" 
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Day}" FontSize="20" 
                                FontWeight="Bold" Foreground="#08329D" HorizontalAlignment="Right" Margin="0 0 10 10"/>
-                    <TextBlock Grid.Row="2" Text="Khu vực: Phường Linh Trung, Tp. Thủ Đức, Tp. Hồ Chí Minh" FontSize="20" 
+                    <TextBlock Grid.Row="2" Text="{Binding Address}" FontSize="20" 
                                FontWeight="Bold" Foreground="#08329D" HorizontalAlignment="Left" Margin="15 0 0 15"/>
-                    <TextBlock Grid.Row="2" Grid.Column="1" Text="Giờ: 15:26" FontSize="20" 
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Time}" FontSize="20" 
                                FontWeight="Bold" Foreground="#08329D" HorizontalAlignment="Right" Margin="0 0 15 15"/>
                 </Grid>
             </Border>

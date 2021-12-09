@@ -17,6 +17,7 @@ namespace Household_Management_System.ViewModels
         private string username;
         private string password;
         LocalPoliceModel currentUser;
+
         public string Username
         {
             get
@@ -46,7 +47,7 @@ namespace Household_Management_System.ViewModels
             if (!username.Equals("") && !password.Equals("")) return true;
             return false;
         }
-        public void Login(object sender)
+        public void Login()
         {
             if (CanLogin(username, password))
                 CheckAccount(username, password);
@@ -64,19 +65,22 @@ namespace Household_Management_System.ViewModels
             }
             return hash.ToString();
         }
-        private bool CheckAccount(string user, string pass)
+        private void CheckAccount(string user, string pass)
         {
-            if (SqliteDataAccess.LoadPolice(user).Count > 0)
+            if (LocalPoliceAccess.LoadPolice(user) != null)
             {
-                currentUser = SqliteDataAccess.LoadPolice(user)[0];
+                currentUser = LocalPoliceAccess.LoadPolice(user);
                 if (currentUser.Password.Equals(ConvertToMD5(pass)))
                 {
-                    MessageBox.Show("Đăng nhập thành công");
-                    return true;
-                }
+                    IWindowManager manager = new WindowManager();
+                    manager.ShowWindowAsync(new ShellViewModel(user), null, null);
+                    TryCloseAsync();
+                }                  
+                else
+                    MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            MessageBox.Show("Sai mật khẩu!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
-            return false;
+            else 
+                MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }
