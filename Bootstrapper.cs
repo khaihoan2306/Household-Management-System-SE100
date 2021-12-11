@@ -27,6 +27,7 @@ namespace Household_Management_System
         {
             _container.Instance(_container);
             _container
+                .Singleton<ShellViewModel, ShellViewModel>()
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>();
             GetType().Assembly.GetTypes()
@@ -40,5 +41,6 @@ namespace Household_Management_System
         {
             DisplayRootViewFor<LoginViewModel>();
         }
+        
     }
 }

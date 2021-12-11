@@ -17,6 +17,7 @@ namespace Household_Management_System.ViewModels
         private string username;
         private string password;
         LocalPoliceModel currentUser;
+        private IEventAggregator _events;
 
         public string Username
         {
@@ -67,13 +68,13 @@ namespace Household_Management_System.ViewModels
         }
         private void CheckAccount(string user, string pass)
         {
-            if (LocalPoliceAccess.LoadPolice(user) != null)
+            if (LocalPoliceAccess.LoadPolice(user).Count > 0)
             {
-                currentUser = LocalPoliceAccess.LoadPolice(user);
+                currentUser = LocalPoliceAccess.LoadPolice(user)[0];
                 if (currentUser.Password.Equals(ConvertToMD5(pass)))
                 {
                     IWindowManager manager = new WindowManager();
-                    manager.ShowWindowAsync(new ShellViewModel(user), null, null);
+                    manager.ShowWindowAsync(new ShellViewModel(username), null, null);
                     TryCloseAsync();
                 }                  
                 else

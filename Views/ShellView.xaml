@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Household_Management_System.Views"
         mc:Ignorable="d"
         ResizeMode="CanMinimize" 
-        Title="ShellView" Height="810" Width="1540" WindowState="Maximized">
+        Title="Phần mềm quản lý hộ khẩu" Height="810" Width="1540" WindowState="Maximized">
     <Grid Background="White">
         <DockPanel>
             <Menu Height="28" DockPanel.Dock="Top" Background="#7EEA6C">
@@ -35,7 +35,7 @@
                     <MenuItem Header="_Close"/>
                     <MenuItem Header="_Save"/>
                 </MenuItem>
-                <MenuItem x:Name="LogOut" Height="28" Header="Đăng xuất" FontSize="14" HorizontalAlignment="Right" Foreground="Red"/>
+                <MenuItem x:Name="LogOut" Height="28" Header="{Binding Exit}" FontSize="14" HorizontalAlignment="Right" Foreground="Red"/>
 
             </Menu>
             <StatusBar DockPanel.Dock="Bottom" Background="#7EEA6C">

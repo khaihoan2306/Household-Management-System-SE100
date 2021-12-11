@@ -21,6 +21,14 @@ namespace Household_Management_System.DataAccess
                 return output.First();
             }
         }
+        public static List<string> LoadVillageList(string provinceCode, string districtCode, string wardCode)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<string>("select VillageName from LocalAddress where ProvinceCode='" + provinceCode + "'and DistrictCode='" + districtCode + "'and WardCode='" + wardCode + "'", new DynamicParameters());
+                return output.ToList();
+            }
+        }
         private static string LoadConnectionString(string id = "Default")
         {
 
