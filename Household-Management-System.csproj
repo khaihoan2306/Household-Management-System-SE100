@@ -116,8 +116,11 @@
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewResidenceView.xaml.cs">
-      <DependentUpon>NewResidenceView.xaml</DependentUpon>
+    <Compile Include="Views\NewHouseholdView.xaml.cs">
+      <DependentUpon>NewHouseholdView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewDemographicView.xaml.cs">
+      <DependentUpon>NewDemographicView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ResidenceView.xaml.cs">
       <DependentUpon>ResidenceView.xaml</DependentUpon>
@@ -175,7 +178,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\NewResidenceView.xaml">
+    <Page Include="Views\NewHouseholdView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NewDemographicView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -218,6 +225,10 @@
   <ItemGroup>
     <Resource Include="Assets\Images\add.png" />
     <Resource Include="Assets\Images\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\calendar.png" />
+    <Resource Include="Assets\Images\save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets')" />

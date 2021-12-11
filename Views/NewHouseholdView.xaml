@@ -1,0 +1,51 @@
+﻿<Window x:Class="Household_Management_System.Views.NewHouseholdView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Household_Management_System.Views"
+        mc:Ignorable="d"
+        Title="NewHouseholdView" Height="425" Width="615
+        ">
+    <Grid>
+        <Grid>
+            <StackPanel Background="#FF7EEA6C" VerticalAlignment="Top">
+                <Label Content="Thêm mới nhân khẩu" Background="{x:Null}" HorizontalAlignment="Center" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Margin="43,48,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
+                <Label Content="Số sổ hộ khẩu:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
+                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="402" Height="26" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Margin="94,89,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
+                <Label Content="Số nhà:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
+                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="402" Height="26" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Margin="45,130,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
+                <Label Content="Thôn/Khu vực:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
+                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="402" Height="26" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Margin="22,171,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
+                <Label Content="Xóm/Tổ dân phố:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
+                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="402" Height="26" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Margin="87,212,0,0" Orientation="Horizontal" Height="123" VerticalAlignment="Top">
+                <Label Content="Ghi chú:" Height="26" VerticalAlignment="Center" FontSize="16" Padding="4,2,4,0"/>
+                <TextBox Margin="6,0,0,0.2" BorderThickness="1" Width="402" Height="120"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,340,0,0" Height="40">
+                <Button Style="{x:Null}" Background="#FF87C5FF" BorderBrush="Black" Foreground="Black" Margin="187,0,0,0" Width="98" Height="40">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="../Assets/Images/save.png" Width="24" Height="24"/>
+                        <TextBlock FontSize="18" Text="Lưu" Margin="5,0,0,0" Padding="6,0,0,0"/>
+                    </StackPanel>
+                </Button>
+                <Button Style="{x:Null}" Background="#FFFF8787" BorderBrush="Black" Foreground="Black" Margin="46,0,0,0" Width="98" Height="40">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="../Assets/Images/delete.png" Width="24" Height="24"/>
+                        <TextBlock FontSize="18" Text="Thoát" Margin="5,0,0,0" Padding="6,0,0,0"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
