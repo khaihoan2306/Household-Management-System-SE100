@@ -2,23 +2,21 @@
 using Household_Management_System.Models;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace Household_Management_System.DataAccess
 {
-    public class LocalPoliceAccess
+    public class HouseholdAccess
     {
-        public static List<LocalPoliceModel> LoadPolice(string username)
+        public static List<HouseholdModel> LoadHousehold()
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<LocalPoliceModel>("select * from LocalPolice where Username='" + username + "'", new DynamicParameters());
+                var output = cnn.Query<HouseholdModel>("select * from Household", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -29,7 +27,7 @@ namespace Household_Management_System.DataAccess
             dir = dir.Remove(dir.Length - 9, 9);
             dir += "HouseholdDB.db";
             connectionString += dir + ";Version=3;";
-            return connectionString;                
+            return connectionString;
         }
     }
 }

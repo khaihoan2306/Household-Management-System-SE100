@@ -15,9 +15,11 @@ namespace Household_Management_System.ViewModels
     {
         private string day, time, address;
         private LocalPoliceModel currentUser;
-        public DashboardViewModel(string username)
+        ShellViewModel _shell;
+        public DashboardViewModel(string username, ShellViewModel shell)
         {
-            currentUser = LocalPoliceAccess.LoadPolice(username);
+            _shell = shell;
+            currentUser = LocalPoliceAccess.LoadPolice(username)[0];
             SetTimerAndAddress();
         }
         private void SetTimerAndAddress()
@@ -77,6 +79,10 @@ namespace Household_Management_System.ViewModels
         public void Setting()
         {
             
+        }
+        public void Household()
+        {
+            _shell.HouseholdChangeView();
         }
     }
     

@@ -8,9 +8,9 @@ namespace Household_Management_System.Models
 {
     public class LocalAddressModel
     {
-        private string provinceCode, provinceName, districtCode, districtName, wardCode, wardName;
+        private string provinceCode, provinceName, districtCode, districtName, wardCode, wardName, villageCode, villageName;
 
-        public LocalAddressModel(string provinceCode, string provinceName, string districtCode, string districtName, string wardCode, string wardName)
+        public LocalAddressModel(string provinceCode, string provinceName, string districtCode, string districtName, string wardCode, string wardName, string villageCode, string villageName)
         {
             this.ProvinceCode = provinceCode;
             this.ProvinceName = provinceName;
@@ -18,6 +18,8 @@ namespace Household_Management_System.Models
             this.DistrictName = districtName;
             this.WardCode = wardCode;
             this.WardName = wardName;
+            this.VillageCode = villageCode;
+            this.VillageName = villageName;
         }
 
         public string ProvinceCode { get => provinceCode; set => provinceCode = value; }
@@ -26,6 +28,9 @@ namespace Household_Management_System.Models
         public string DistrictName { get => districtName; set => districtName = value; }
         public string WardCode { get => wardCode; set => wardCode = value; }
         public string WardName { get => wardName; set => wardName = value; }
+        public string VillageCode { get => villageCode; set => villageCode = value; }
+        public string VillageName { get => villageName; set => villageName = value; }
+
         public string GetFullAddress()
         {
             return wardName + ", " + districtName + ", " + provinceName;
