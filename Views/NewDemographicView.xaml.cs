@@ -15,13 +15,23 @@ using System.Windows.Shapes;
 namespace Household_Management_System.Views
 {
     /// <summary>
-    /// Interaction logic for NewResidenceView.xaml
+    /// Interaction logic for NewDemographicView.xaml
     /// </summary>
-    public partial class NewResidenceView : Window
+    public partial class NewDemographicView : Window
     {
-        public NewResidenceView()
+        public NewDemographicView()
         {
             InitializeComponent();
+        }
+
+        private void btnBirth_Click(object sender, RoutedEventArgs e)
+        {
+            PopupBirthCalendar.IsOpen = true;
+        }
+
+        private void btnDateProvide_Click(object sender, RoutedEventArgs e)
+        {
+            PopupDateProvideCalendar.IsOpen = true;
         }
     }
 }
