@@ -126,6 +126,9 @@
     <Compile Include="Views\MilitaryServiceView.xaml.cs">
       <DependentUpon>MilitaryServiceView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NewAbsenceView.xaml.cs">
+      <DependentUpon>NewAbsenceView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NewHouseholdView.xaml.cs">
       <DependentUpon>NewHouseholdView.xaml</DependentUpon>
     </Compile>
@@ -192,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MilitaryServiceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewAbsenceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
