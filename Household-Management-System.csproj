@@ -103,6 +103,7 @@
     <Compile Include="Models\HouseholdModel.cs" />
     <Compile Include="Models\LocalAddressModel.cs" />
     <Compile Include="Models\LocalPoliceModel.cs" />
+    <Compile Include="Models\ResidenceModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\HouseholdViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
