@@ -99,6 +99,7 @@
     <Compile Include="DataAccess\LocalPoliceAccess.cs" />
     <Compile Include="DataAccess\ProvinceInfoAccess.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
+    <Compile Include="Models\AbsenceModel.cs" />
     <Compile Include="Models\HouseholdModel.cs" />
     <Compile Include="Models\LocalAddressModel.cs" />
     <Compile Include="Models\LocalPoliceModel.cs" />

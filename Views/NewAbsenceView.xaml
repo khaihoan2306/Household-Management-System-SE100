@@ -21,7 +21,7 @@
         <StackPanel Margin="107,146,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
             <Label Content="Ngày sinh:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
             <TextBox Text="__ /__ /____" Margin="6,0,0,0" BorderThickness="1" Height="26" FontSize="16" Padding="0,0,0,4"/>
-            <Button x:Name="btnBirth" Width="26" Height="26" Background="{x:Null}" BorderBrush="{x:Null}" Click="btnBirth_Click" Margin="6,0,0,0">
+            <Button x:Name="btnBirth" Width="26" Height="26" Background="{x:Null}" BorderBrush="{x:Null}"  Margin="6,0,0,0">
                 <Image Width="24" Height="21" Source="../Assets/Images/calendar.png" Margin="-15,-4,-8,-3" HorizontalAlignment="Center" VerticalAlignment="Center"  />
             </Button>
             <Popup x:Name="PopupBirthCalendar" StaysOpen="False">
