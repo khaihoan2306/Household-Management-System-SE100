@@ -51,10 +51,10 @@
                 <DataGridTextColumn Width="auto" Header="Họ và Tên"/>
                 <DataGridTextColumn Width="auto" Header="CMND/CCCD"/>
                 <DataGridTextColumn Width="auto" Header="Ngày sinh"/>
-                <DataGridTextColumn Width="auto" Header="Giới tính"/>
+                <DataGridTextColumn Width="auto" Header="Dân tộc"/>
+                <DataGridTextColumn Width="auto" Header="Tên gọi khác"/>
                 <DataGridTextColumn Width="auto" Header="Nơi thường trú"/>
-                <DataGridTextColumn Width="auto" Header="Nơi tạm trú"/>
-                <DataGridTextColumn Width="*" Header="Ngày đến"/>
+                <DataGridTextColumn Width="*" Header="Tình trạng"/>
             </DataGrid.Columns>
 
         </DataGrid>
