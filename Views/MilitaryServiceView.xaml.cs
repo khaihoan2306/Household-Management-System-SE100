@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Household_Management_System.Views
@@ -18,7 +17,7 @@ namespace Household_Management_System.Views
     /// <summary>
     /// Interaction logic for MilitaryServiceView.xaml
     /// </summary>
-    public partial class MilitaryServiceView : Page
+    public partial class MilitaryServiceView : UserControl
     {
         public MilitaryServiceView()
         {

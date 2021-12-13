@@ -123,6 +123,9 @@
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MilitaryServiceView.xaml.cs">
+      <DependentUpon>MilitaryServiceView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NewHouseholdView.xaml.cs">
       <DependentUpon>NewHouseholdView.xaml</DependentUpon>
     </Compile>
@@ -185,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MilitaryServiceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
