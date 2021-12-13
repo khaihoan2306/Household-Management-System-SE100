@@ -80,5 +80,10 @@ namespace Household_Management_System.ViewModels
             exit = "Quay lại";
             NotifyOfPropertyChange(() => Exit);
         }
+        protected override Task OnDeactivateAsync(bool close, CancellationToken cancellationToken)
+        {
+            Environment.Exit(0);
+            return base.OnDeactivateAsync(close, cancellationToken);
+        }
     }
 }

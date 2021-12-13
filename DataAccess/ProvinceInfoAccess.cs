@@ -12,13 +12,36 @@ namespace Household_Management_System.DataAccess
 {
     public class ProvinceInfoAccess
     {
-        
+        public static string LoadWardName(string provinceCode, string districtCode, string wardCode)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<string>("select WardName from LocalAddress where ProvinceCode='" + provinceCode + "'and DistrictCode='" + districtCode + "'and WardCode='" + wardCode + "'", new DynamicParameters());
+                return output.FirstOrDefault();
+            }
+        }
+        public static string LoadDistrictName(string provinceCode, string districtCode, string wardCode)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<string>("select DistrictName from LocalAddress where ProvinceCode='" + provinceCode + "'and DistrictCode='" + districtCode + "'and WardCode='" + wardCode + "'", new DynamicParameters());
+                return output.FirstOrDefault();
+            }
+        }
+        public static string LoadProvinceName(string provinceCode, string districtCode, string wardCode)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<string>("select ProvinceName from LocalAddress where ProvinceCode='" + provinceCode + "'and DistrictCode='" + districtCode + "'and WardCode='" + wardCode + "'", new DynamicParameters());
+                return output.FirstOrDefault();
+            }
+        }
         public static LocalAddressModel LoadFullInfo(string provinceCode, string districtCode, string wardCode)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 var output = cnn.Query<LocalAddressModel>("select * from LocalAddress where ProvinceCode='" + provinceCode + "'and DistrictCode='" + districtCode + "'and WardCode='" + wardCode + "'", new DynamicParameters());
-                return output.First();
+                return output.FirstOrDefault();
             }
         }
         public static List<string> LoadVillageList(string provinceCode, string districtCode, string wardCode)

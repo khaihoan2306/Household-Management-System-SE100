@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Household_Management_System.Views"
-        x:Class="Household_Management_System.Views.HouseholdView"
+        xmlns:local="clr-namespace:Household_Management_System.Views" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:cal="http://caliburnmicro.com"
+    x:Class="Household_Management_System.Views.HouseholdView"
         mc:Ignorable="d"
         Height="700" Width="1500">
     <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Height="700" Width="1440">
@@ -13,13 +13,13 @@
             <ComboBox x:Name="VillageList" SelectedItem="{Binding SelectedVillage}" 
                       FontSize="18" Width="200" IsEditable="True" IsReadOnly="True"
                       Background="White" Margin="39,0,0,0" 
-                      BorderThickness="1" Padding="5" 
-                      VerticalAlignment="Center" Text="Khu phố/ Tổ"/>
+                      BorderThickness="1" Padding="5"
+                      VerticalAlignment="Center" Text="Khu phố/ Thôn"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBox Style="{x:Null}" TextWrapping="Wrap" Width="423" Background="White" BorderThickness="1" 
+                <TextBox x:Name="TextSearch" Style="{x:Null}" TextWrapping="Wrap" Width="423" Background="White" BorderThickness="1" 
                      BorderBrush="Black" FontSize="18" VerticalContentAlignment="Center"
                      Focusable="True"/>
-                <Button Style="{x:Null}" Background="#FF7EEA6C" BorderBrush="Black" Foreground="Black" Margin="20,0,0,0" Padding="10 5 10 5">
+                <Button x:Name="Search" Style="{x:Null}" Background="#FF7EEA6C" BorderBrush="Black" Foreground="Black" Margin="20,0,0,0" Padding="10 5 10 5">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="../Assets/Images/search.png" Width="31" Height="31"/>
                         <TextBlock FontSize="18" Text="Tìm kiếm" Margin="0" Padding="0,3,0,0"/>
@@ -28,27 +28,37 @@
             </StackPanel>
 
         </DockPanel>
-        <DataGrid x:Name="HouseholdList" AutoGenerateColumns="False" Style="{x:Null}" SelectionUnit="FullRow" BorderThickness="1" BorderBrush="Black" Height="550" Margin="0 20 0 0">
+        <DataGrid x:Name="HouseholdList" Style="{x:Null}" AutoGenerateColumns="False"  SelectionUnit="FullRow" BorderThickness="1" BorderBrush="Black" Height="550" Margin="0 20 0 0" 
+                  IsReadOnly="True" SelectedItem="{Binding SelectedHousehold}" Background="White">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight"  Value="Bold" />
+                    <Setter Property="FontSize"  Value="14" />
+                    <Setter Property="HorizontalContentAlignment"  Value="Center" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            
             <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Mã hộ khẩu" Binding="{Binding Path=HouseholdCode}" />
-                <DataGridTextColumn Width="*" Header="Chủ hộ" Binding="{Binding Path=HostCode}" />
-                <DataGridTextColumn Width="*" Header="Số nhà" Binding="{Binding Path=Address}" />
-                <DataGridTextColumn Width="*" Header="Khu phố/Tổ" Binding="{Binding Path=Village}" />
-                <DataGridTextColumn Width="*" Header="Phường/Xã" Binding="{Binding Path=Ward}" />
-                <DataGridTextColumn Width="*" Header="Quận/Huyện" Binding="{Binding Path=District}" />
-                <DataGridTextColumn Width="*" Header="Tỉnh" Binding="{Binding Path=Province}" />
+                <DataGridTextColumn Width="auto" Header="Mã hộ khẩu" Binding="{Binding Path=HouseholdCode}" />
+                <DataGridTextColumn Width="auto" Header="Chủ hộ" Binding="{Binding Path=HostName}" />
+                <DataGridTextColumn Width="auto" Header="Số nhà" Binding="{Binding Path=Address}" />
+                <DataGridTextColumn Width="auto" Header="Khu phố/ Thôn" Binding="{Binding Path=Village}" />
+                <DataGridTextColumn Width="auto" Header="Phường/Xã" Binding="{Binding Path=Ward}" />
+                <DataGridTextColumn Width="auto" Header="Quận/Huyện" Binding="{Binding Path=District}" />
+                <DataGridTextColumn Width="auto" Header="Tỉnh" Binding="{Binding Path=Province}" />
                 <DataGridTextColumn Width="*" Header="Ghi chú" Binding="{Binding Path=Note}" />
             </DataGrid.Columns>
+            
         </DataGrid>
 
         <DockPanel  Margin="0,14,0,0">
-            <Button Style="{x:Null}" Background="{x:Null}" BorderBrush="Black" Foreground="Black" Padding="5" Margin="0 10 0 0">
+            <Button x:Name="CreateNewHousehold" Style="{x:Null}" Background="{x:Null}" BorderBrush="Black" Foreground="Black" Padding="5" Margin="0 10 0 0">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="../Assets/Images/add.png" Width="47" Height="47"/>
                     <TextBlock FontSize="20" Text="Cấp hộ khẩu" Margin="5,0,0,0" Padding="0,10,0,0"/>
                 </StackPanel>
             </Button>
-            <Button Style="{x:Null}" Background="{x:Null}" BorderBrush="Black" Foreground="Black" Padding="5" Margin="20 10 0 0">
+            <Button x:Name="Delete" Style="{x:Null}" Background="{x:Null}" BorderBrush="Black" Foreground="Black" Padding="5" Margin="20 10 0 0">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="../Assets/Images/delete.png" Width="47" Height="47"/>
                     <TextBlock FontSize="20" Text="Xóa hộ khẩu" Margin="5,0,0,0" Padding="0,10,0,0"/>
