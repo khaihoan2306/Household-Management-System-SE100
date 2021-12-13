@@ -17,7 +17,7 @@ namespace Household_Management_System.Views
     /// <summary>
     /// Interaction logic for ResidenceView.xaml
     /// </summary>
-    public partial class ResidenceView : Window
+    public partial class ResidenceView : UserControl
     {
         public ResidenceView()
         {
