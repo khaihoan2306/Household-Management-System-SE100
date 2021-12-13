@@ -4,48 +4,48 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Household_Management_System.Views"
-        mc:Ignorable="d"
-        Title="NewHouseholdView" Height="425" Width="615
-        ">
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="NewHouseholdView" Height="425" Width="615" WindowStyle="None" ResizeMode="NoResize" BorderThickness="1">
     <Grid>
-        <Grid>
-            <StackPanel Background="#FF7EEA6C" VerticalAlignment="Top">
-                <Label Content="Thêm mới nhân khẩu" Background="{x:Null}" HorizontalAlignment="Center" FontSize="16"/>
+        <StackPanel>
+            <StackPanel Background="#FF7EEA6C">
+                <Label Content="Thêm mới hộ khẩu" Background="{x:Null}" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
             </StackPanel>
-            <StackPanel Margin="43,48,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
-                <Label Content="Số sổ hộ khẩu:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="402" Height="26" FontSize="16"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 10 60 0">
+                <Label Content="Mã hộ khẩu:" VerticalAlignment="Center" FontSize="16" />
+                <Label x:Name="HouseholdCode" Margin="6,0,0,0"  Width="402" FontSize="16" FontWeight="SemiBold"/>
             </StackPanel>
-            <StackPanel Margin="94,89,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
-                <Label Content="Số nhà:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="402" Height="26" FontSize="16"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 10 60 0">
+                <Label Content="Chủ hộ:" VerticalAlignment="Center" FontSize="16" />
+                <TextBox x:Name="HostName" Margin="6,0,0,0" BorderThickness="1" Width="402" FontSize="16" CharacterCasing="Upper" VerticalContentAlignment="Center"/>
             </StackPanel>
-            <StackPanel Margin="45,130,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
-                <Label Content="Thôn/Khu vực:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="402" Height="26" FontSize="16"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 10 60 0">
+                <Label Content="Số nhà:" VerticalAlignment="Center" FontSize="16" Padding="4,2,4,0"/>
+                <TextBox x:Name="Address" Margin="6,0,0,0" BorderThickness="1" Width="402" FontSize="16"/>
             </StackPanel>
-            <StackPanel Margin="22,171,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
-                <Label Content="Xóm/Tổ dân phố:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="402" Height="26" FontSize="16"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 10 60 0">
+                <Label Content="Khu phố/ Tổ:" VerticalAlignment="Center" FontSize="16" Padding="4,2,4,0" />
+                <ComboBox x:Name="VillageList" SelectedItem="{Binding SelectedVillage}" IsEditable="False" Margin="6,0,0,0" BorderThickness="1" Width="402" FontSize="16" Padding="5 2 5 2"/>
             </StackPanel>
-            <StackPanel Margin="87,212,0,0" Orientation="Horizontal" Height="123" VerticalAlignment="Top">
-                <Label Content="Ghi chú:" Height="26" VerticalAlignment="Center" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Margin="6,0,0,0.2" BorderThickness="1" Width="402" Height="120"/>
+            
+            <StackPanel Orientation="Horizontal" Height="123" HorizontalAlignment="Right" Margin="0 10 60 0">
+                <Label Content="Ghi chú:" VerticalAlignment="Center" FontSize="16" Padding="4,2,4,0"/>
+                <TextBox x:Name="Note" Margin="6,0,0,0" BorderThickness="1" Width="402" Height="120" AcceptsReturn="True" TextWrapping="Wrap"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,340,0,0" Height="40">
-                <Button Style="{x:Null}" Background="#FF87C5FF" BorderBrush="Black" Foreground="Black" Margin="187,0,0,0" Width="98" Height="40">
+            <StackPanel Orientation="Horizontal" Margin="0 20 0 0" Height="40">
+                <Button x:Name="Save" Style="{x:Null}" Background="#FF87C5FF" BorderBrush="Black" Foreground="Black" Margin="187,0,0,0" Width="98" Height="40">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="../Assets/Images/save.png" Width="24" Height="24"/>
                         <TextBlock FontSize="18" Text="Lưu" Margin="5,0,0,0" Padding="6,0,0,0"/>
                     </StackPanel>
                 </Button>
-                <Button Style="{x:Null}" Background="#FFFF8787" BorderBrush="Black" Foreground="Black" Margin="46,0,0,0" Width="98" Height="40">
+                <Button x:Name="Close" Style="{x:Null}" Background="#FFFF8787" BorderBrush="Black" Foreground="Black" Margin="46,0,0,0" Width="98" Height="40">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="../Assets/Images/delete.png" Width="24" Height="24"/>
                         <TextBlock FontSize="18" Text="Thoát" Margin="5,0,0,0" Padding="6,0,0,0"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
-        </Grid>
+        </StackPanel>
     </Grid>
 </Window>

@@ -23,5 +23,15 @@ namespace Household_Management_System.Views
         {
             InitializeComponent();
         }
+
+        private void HouseholdList_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+
+        }
+
+        private void HouseholdList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

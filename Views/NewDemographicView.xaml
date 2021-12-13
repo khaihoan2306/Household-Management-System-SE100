@@ -101,7 +101,7 @@
                 <Label Content="Ghi chú:" Height="26" VerticalAlignment="Center" FontSize="16" Padding="4,2,4,0"/>
                 <TextBox Margin="6,0,0,0.2" BorderThickness="1" Width="945" Height="123"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="-12,754,0,0">
+            <StackPanel Orientation="Horizontal" Margin="0,754,0,0">
                 <Button Style="{x:Null}" Background="#FF87C5FF" BorderBrush="Black" Foreground="Black" Margin="486,0,0,0" Width="98" Height="40">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="../Assets/Images/save.png" Width="24" Height="24"/>
