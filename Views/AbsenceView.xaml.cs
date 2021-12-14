@@ -17,7 +17,7 @@ namespace Household_Management_System.Views
     /// <summary>
     /// Interaction logic for AbsenceView.xaml
     /// </summary>
-    public partial class AbsenceView : Window
+    public partial class AbsenceView : UserControl
     {
         public AbsenceView()
         {
