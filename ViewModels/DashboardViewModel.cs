@@ -84,6 +84,10 @@ namespace Household_Management_System.ViewModels
         {
             _shell.HouseholdChangeView();
         }
+        public void Demographic()
+        {
+            _shell.DemographicChangeView();
+        }
     }
     
 }

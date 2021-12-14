@@ -15,9 +15,11 @@ namespace Household_Management_System.DataAccess
     {
         public static List<HouseholdModel> LoadHousehold(string village = "", string text = "")
         {
+            string hostName = text.ToUpper();
+            text = text.ToLower();
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<HouseholdModel>("select * from Household where Village like '%" + village + "%' and (HouseholdCode like '%"+text+"%' or HostName like '%"+text+"%' or Address like '%"+text+"%')", new DynamicParameters());
+                var output = cnn.Query<HouseholdModel>("select * from Household where Village like '%" + village + "%' and (HouseholdCode like '%"+text+"%' or HostName like '%"+hostName+"%' or Address like '%"+text+"%')", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -53,15 +55,6 @@ namespace Household_Management_System.DataAccess
             dir += "HouseholdDB.db";
             connectionString += dir + ";Version=3;";
             return connectionString;
-        }
-        public static string ToTitleCase(string s)
-        {
-            s = s.ToLower();
-            char[] charArr = s.ToCharArray();
-            charArr[0] = Char.ToUpper(charArr[0]);
-            foreach (Match m in Regex.Matches(s, @"(\s\S)"))
-                charArr[m.Index + 1] = m.Value.ToUpper().Trim()[0];
-            return new String(charArr);
         }
     }
 }

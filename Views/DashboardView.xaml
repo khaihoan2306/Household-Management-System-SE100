@@ -15,7 +15,7 @@
                 <StackPanel Orientation="Horizontal">
                     <Border Width="95" Height="120" BorderThickness="2" BorderBrush="Black" CornerRadius="10"
                     VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5 0 20 0">
-                        <Button Style="{x:Null}" BorderBrush="Transparent" Background="Transparent">
+                        <Button x:Name="Demographic" Style="{x:Null}" BorderBrush="Transparent" Background="Transparent">
                             <StackPanel>
                                 <Image Source="../Assets/Images/demographic.png" Width="64" />
                                 <TextBlock FontSize="14" TextAlignment="Center">Quản lý <LineBreak /> Nhân khẩu</TextBlock>

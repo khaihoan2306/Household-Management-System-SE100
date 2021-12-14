@@ -94,15 +94,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataAccess\DemographicAccess.cs" />
     <Compile Include="DataAccess\HouseholdAccess.cs" />
     <Compile Include="DataAccess\HouseholdDetailAccess.cs" />
     <Compile Include="DataAccess\LocalPoliceAccess.cs" />
     <Compile Include="DataAccess\ProvinceInfoAccess.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
+    <Compile Include="Models\DemographicModel.cs" />
     <Compile Include="Models\HouseholdModel.cs" />
     <Compile Include="Models\LocalAddressModel.cs" />
     <Compile Include="Models\LocalPoliceModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\DemographicViewModel.cs" />
     <Compile Include="ViewModels\HouseholdViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\NewHouseholdViewModel.cs" />

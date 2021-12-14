@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Household_Management_System.ViewModels
 {
@@ -84,18 +85,30 @@ namespace Household_Management_System.ViewModels
         }
         public void Delete()
         {
-            if (HouseholdDetailAccess.CheckMemberHousehold(_selectedHousehold.HouseholdCode))
-                MessageBox.Show("Vui lòng cắt khẩu hết thành viên trong hộ!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+            if (SelectedHousehold == null) 
+                MessageBox.Show("Vui lòng chọn một hộ khẩu để xóa!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             else
             {
-                MessageBoxResult mr = MessageBox.Show("Bạn có muốn xóa hộ khẩu này?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (mr == MessageBoxResult.Yes)
+                if (HouseholdDetailAccess.CheckMemberHousehold(_selectedHousehold.HouseholdCode))
+                    MessageBox.Show("Vui lòng cắt khẩu hết thành viên trong hộ!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                else
                 {
-                    HouseholdAccess.DeleteHousehold(_selectedHousehold.HouseholdCode);
-                    Search();
+                    MessageBoxResult mr = MessageBox.Show("Bạn có muốn xóa hộ khẩu này?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (mr == MessageBoxResult.Yes)
+                    {
+                        HouseholdAccess.DeleteHousehold(_selectedHousehold.HouseholdCode);
+                        Search();
+                    }
                 }
             }
         }
-        
+        public void ExecuteFilterView(KeyEventArgs keyArgs)
+        {
+            if (keyArgs.Key == Key.Enter)
+            {
+                Search();
+            }
+        }
+
     }
 }

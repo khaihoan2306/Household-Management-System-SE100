@@ -18,7 +18,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBox x:Name="TextSearch" Style="{x:Null}" TextWrapping="Wrap" Width="423" Background="White" BorderThickness="1" 
                      BorderBrush="Black" FontSize="18" VerticalContentAlignment="Center"
-                     Focusable="True"/>
+                     Focusable="True" cal:Message.Attach="[Event KeyDown] = [Action ExecuteFilterView($eventArgs)]"/>
                 <Button x:Name="Search" Style="{x:Null}" Background="#FF7EEA6C" BorderBrush="Black" Foreground="Black" Margin="20,0,0,0" Padding="10 5 10 5">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="../Assets/Images/search.png" Width="31" Height="31"/>
