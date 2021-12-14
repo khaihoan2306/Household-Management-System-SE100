@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Household_Management_System.Views
 {
     /// <summary>
-    /// Interaction logic for ResidenceView.xaml
+    /// Interaction logic for MilitaryServiceView.xaml
     /// </summary>
-    public partial class ResidenceView : UserControl
+    public partial class MilitaryServiceView : UserControl
     {
-        public ResidenceView()
+        public MilitaryServiceView()
         {
             InitializeComponent();
         }

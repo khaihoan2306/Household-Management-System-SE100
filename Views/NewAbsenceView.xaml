@@ -1,0 +1,102 @@
+﻿<Window x:Class="Household_Management_System.Views.NewAbsenceView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Household_Management_System.Views"
+        mc:Ignorable="d"
+        Title="NewAbsenceView" Height="770" Width="800">
+    <Grid>
+        <StackPanel Background="#FF7EEA6C" Width="800" Height="27" VerticalAlignment="Top">
+            <Label Content="Thêm mới nhân khẩu tạm vắng" Background="{x:Null}" HorizontalAlignment="Center" FontSize="16"/>
+        </StackPanel>
+        <StackPanel Margin="109,60,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
+            <Label Content="Họ và tên:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
+            <TextBox Margin="6,0,0,0" BorderThickness="1" Width="500" Height="26" FontSize="16"/>
+        </StackPanel>
+        <StackPanel Margin="62,103,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
+            <Label Content="Số CMND/CCCD:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
+            <TextBox Margin="6,0,0,0" BorderThickness="1" Width="500" Height="26" FontSize="16"/>
+        </StackPanel>
+        <StackPanel Margin="107,146,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
+            <Label Content="Ngày sinh:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
+            <TextBox Text="__ /__ /____" Margin="6,0,0,0" BorderThickness="1" Height="26" FontSize="16" Padding="0,0,0,4"/>
+            <Button x:Name="btnBirth" Width="26" Height="26" Background="{x:Null}" BorderBrush="{x:Null}"  Margin="6,0,0,0">
+                <Image Width="24" Height="21" Source="../Assets/Images/calendar.png" Margin="-15,-4,-8,-3" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+            </Button>
+            <Popup x:Name="PopupBirthCalendar" StaysOpen="False">
+                <Calendar x:Name="CalendarControlBirth"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center">
+                </Calendar>
+            </Popup>
+            <Label Content="Giới tính:" Height="26" Margin="86,0,0,0" FontSize="16"/>
+            <ComboBox Margin="6,0,0,0" BorderThickness="1" Width="227" Height="26" Padding="0,4,5,4" FontSize="16"/>
+        </StackPanel>
+        <StackPanel Margin="72,189,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
+            <Label Content="Nơi thường trú:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
+            <TextBox Margin="6,0,0,-0.4" BorderThickness="1" Width="500" Height="26" FontSize="16"/>
+        </StackPanel>
+        <StackPanel Margin="95,232,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
+            <Label Content="Nơi tạm trú:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
+            <TextBox Margin="6,0,0,-0.4" BorderThickness="1" Width="500" Height="26" FontSize="16"/>
+        </StackPanel>
+        <StackPanel Margin="82,275,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
+            <Label Content="Nơi ở hiện tại:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
+            <TextBox Margin="6,0,0,0" BorderThickness="1" Width="500" Height="26" FontSize="16"/>
+        </StackPanel>
+        <StackPanel Margin="70,318,0,0" Orientation="Horizontal" Height="69" VerticalAlignment="Top">
+            <Label Content="Lý do tạm vắng:" Height="26" VerticalAlignment="Center" FontSize="16" Padding="4,2,4,0"/>
+            <TextBox Margin="6,0,0,-0.2" BorderThickness="1" Width="500"/>
+        </StackPanel>
+        <StackPanel Margin="51,404,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
+            <Label Content="Tạm vắng từ ngày:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
+            <TextBox Text="__ /__ /____" Margin="6,0,0,0" BorderThickness="1" Height="26" FontSize="16" Padding="0,0,0,4"/>
+            <Button Width="26" Height="26" Background="{x:Null}" BorderBrush="{x:Null}" Margin="6,0,0,0">
+                <Image Width="24" Height="21" Source="../Assets/Images/calendar.png" Margin="-15,-4,-8,-3" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+            </Button>
+            <Popup StaysOpen="False">
+                <Calendar 
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center">
+                </Calendar>
+            </Popup>
+            <Label Content="đến ngày:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0" Margin="195,0,0,0"/>
+            <TextBox Text="__ /__ /____" Margin="6,0,0,0" BorderThickness="1" Height="26" FontSize="16" Padding="0,0,0,4"/>
+            <Button Width="26" Height="26" Background="{x:Null}" BorderBrush="{x:Null}" Margin="6,0,0,0">
+                <Image Width="24" Height="21" Source="../Assets/Images/calendar.png" Margin="-15,-4,-8,-3" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+            </Button>
+            <Popup StaysOpen="False">
+                <Calendar 
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center">
+                </Calendar>
+            </Popup>
+        </StackPanel>
+        <StackPanel Margin="72,447,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
+            <Label Content="Địa chỉ nơi đến:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
+            <TextBox Margin="6,0,0,-0.4" BorderThickness="1" Width="500" Height="26" FontSize="16"/>
+        </StackPanel>
+        <StackPanel Margin="123,490,0,0" Orientation="Horizontal" Height="123" VerticalAlignment="Top">
+            <Label Content="Ghi chú:" Height="26" VerticalAlignment="Center" FontSize="16" Padding="4,2,4,0"/>
+            <TextBox Margin="6,0,0,0.2" BorderThickness="1" Width="500" Height="123"/>
+        </StackPanel>
+
+
+
+        <StackPanel Orientation="Horizontal" Margin="0,658,0,0" RenderTransformOrigin="0.5,0.5">
+            <Button Style="{x:Null}" Background="#FF87C5FF" BorderBrush="Black" Foreground="Black" Margin="278,0,0,0" Width="98" Height="40">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="../Assets/Images/save.png" Width="24" Height="24"/>
+                    <TextBlock FontSize="18" Text="Lưu" Margin="5,0,0,0" Padding="6,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{x:Null}" Background="#FFFF8787" BorderBrush="Black" Foreground="Black" Margin="48,0,0,0" Width="98" Height="40">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="../Assets/Images/delete.png" Width="24" Height="24"/>
+                    <TextBlock FontSize="18" Text="Thoát" Margin="5,0,0,0" Padding="6,0,0,0"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

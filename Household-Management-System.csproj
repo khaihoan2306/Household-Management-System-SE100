@@ -99,9 +99,12 @@
     <Compile Include="DataAccess\LocalPoliceAccess.cs" />
     <Compile Include="DataAccess\ProvinceInfoAccess.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
+    <Compile Include="Models\AbsenceModel.cs" />
     <Compile Include="Models\HouseholdModel.cs" />
     <Compile Include="Models\LocalAddressModel.cs" />
     <Compile Include="Models\LocalPoliceModel.cs" />
+    <Compile Include="Models\MilitaryServiceModel.cs" />
+    <Compile Include="Models\ResidenceModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\HouseholdViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -122,6 +125,12 @@
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MilitaryServiceView.xaml.cs">
+      <DependentUpon>MilitaryServiceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewAbsenceView.xaml.cs">
+      <DependentUpon>NewAbsenceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NewHouseholdView.xaml.cs">
       <DependentUpon>NewHouseholdView.xaml</DependentUpon>
@@ -185,6 +194,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MilitaryServiceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewAbsenceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
