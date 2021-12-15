@@ -82,7 +82,7 @@ namespace Household_Management_System.ViewModels
         public NewHouseholdViewModel(string username, HouseholdViewModel householdVM)
         {
             _householdVM = householdVM;
-            currentUser = LocalPoliceAccess.LoadPolice(username)[0];
+            currentUser = LocalPoliceAccess.LoadPolice(username);
             GenerateHouseholdCode();
             listVillage = ProvinceInfoAccess.LoadVillageList(currentUser.ProvinceManage, currentUser.DistrictManage, currentUser.WardManage);
             VillageList = new BindableCollection<string>(listVillage);

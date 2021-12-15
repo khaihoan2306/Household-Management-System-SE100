@@ -8,23 +8,16 @@
         Height="700" Width="1500">
     <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Height="700" Width="1440">
         <DockPanel>
-            <Label Content="Danh sách tạm trú:" FontSize="18" FontWeight="Bold" Margin="0" Width="193.6" VerticalAlignment="Center"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <ComboBox x:Name="VillageList"
+            <Label Content="Danh sách tạm vắng:" FontSize="18" FontWeight="Bold" Margin="0" Width="193.6" VerticalAlignment="Center"/>
+            <ComboBox x:Name="VillageList" SelectedItem="{Binding SelectedVillage}" 
                       FontSize="18" Width="200" IsEditable="True" IsReadOnly="True"
                       Background="White" Margin="39,0,0,0" 
                       BorderThickness="1" Padding="5"
                       VerticalAlignment="Center" Text="Khu phố/ Thôn"/>
-                <ComboBox x:Name="NeighborhoodGroupList"
-                      FontSize="18" Width="200" IsEditable="True" IsReadOnly="True"
-                      Background="White" Margin="39,0,0,0" 
-                      BorderThickness="1" Padding="5"
-                      VerticalAlignment="Center" Text="Tổ dân phố/Xóm"/>
-            </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBox x:Name="TextSearch" Style="{x:Null}" TextWrapping="Wrap" Width="423" Background="White" BorderThickness="1" 
                      BorderBrush="Black" FontSize="18" VerticalContentAlignment="Center"
-                     Focusable="True"/>
+                     Focusable="True" />
                 <Button x:Name="Search" Style="{x:Null}" Background="#FF7EEA6C" BorderBrush="Black" Foreground="Black" Margin="20,0,0,0" Padding="10 5 10 5">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="../Assets/Images/search.png" Width="31" Height="31"/>
@@ -32,6 +25,7 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
+
         </DockPanel>
         <DataGrid x:Name="AbsenceList" Style="{x:Null}" AutoGenerateColumns="False"  SelectionUnit="FullRow" BorderThickness="1" BorderBrush="Black" Height="550" Margin="0 20 0 0" 
                   IsReadOnly="True" SelectedItem="{Binding SelectedHousehold}" Background="White">

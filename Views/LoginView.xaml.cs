@@ -23,5 +23,10 @@ namespace Household_Management_System.Views
         {
             InitializeComponent();
         }
+
+        private void Password_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }

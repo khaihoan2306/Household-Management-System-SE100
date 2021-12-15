@@ -19,7 +19,7 @@ namespace Household_Management_System.ViewModels
         public DashboardViewModel(string username, ShellViewModel shell)
         {
             _shell = shell;
-            currentUser = LocalPoliceAccess.LoadPolice(username)[0];
+            currentUser = LocalPoliceAccess.LoadPolice(username);
             SetTimerAndAddress();
         }
         private void SetTimerAndAddress()
@@ -83,6 +83,15 @@ namespace Household_Management_System.ViewModels
         public void Household()
         {
             _shell.HouseholdChangeView();
+        }
+        public void Demographic()
+        {
+            _shell.DemographicChangeView();
+        }
+        public void Permanent()
+        {
+            IWindowManager manager = new WindowManager();
+            manager.ShowWindowAsync(new NewDemographicViewModel(), null, null);
         }
     }
     

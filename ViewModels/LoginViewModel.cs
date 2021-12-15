@@ -68,9 +68,9 @@ namespace Household_Management_System.ViewModels
         }
         private void CheckAccount(string user, string pass)
         {
-            if (LocalPoliceAccess.LoadPolice(user).Count > 0)
+            if (LocalPoliceAccess.LoadPolice(user) != null)
             {
-                currentUser = LocalPoliceAccess.LoadPolice(user)[0];
+                currentUser = LocalPoliceAccess.LoadPolice(user);
                 if (currentUser.Password.Equals(ConvertToMD5(pass)))
                 {
                     IWindowManager manager = new WindowManager();
