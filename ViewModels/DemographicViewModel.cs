@@ -57,7 +57,7 @@ namespace Household_Management_System.ViewModels
         }
         public DemographicViewModel(string username)
         {
-            currentUser = LocalPoliceAccess.LoadPolice(username)[0];
+            currentUser = LocalPoliceAccess.LoadPolice(username);
             listPeople = DemographicAccess.LoadPeople("", "");
             listVillage = new List<string>();
             listVillage.Add("-- Tất cả --");

@@ -111,6 +111,7 @@
     <Compile Include="ViewModels\DemographicViewModel.cs" />
     <Compile Include="ViewModels\HouseholdViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\NewDemographicViewModel.cs" />
     <Compile Include="ViewModels\NewHouseholdViewModel.cs" />
     <Compile Include="ViewModels\SettingViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />

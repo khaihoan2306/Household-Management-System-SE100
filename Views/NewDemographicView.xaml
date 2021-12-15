@@ -4,111 +4,99 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Household_Management_System.Views"
-        mc:Ignorable="d"
-        Title="NewDemographicView" Height="839" Width="1214">
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="NewDemographicView" Height="820" Width="1214" WindowStyle="None" ResizeMode="NoResize" BorderThickness="1">
     <Grid>
         <Grid>
             <StackPanel Background="#FF7EEA6C" Width="1214" Height="27" VerticalAlignment="Top">
-                <Label Content="Thêm mới nhân khẩu" Background="{x:Null}" HorizontalAlignment="Center" FontSize="16"/>
+                <Label Content="Thêm mới nhân khẩu" Background="{x:Null}" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
             </StackPanel>
             <StackPanel Margin="108,60,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
                 <Label Content="Họ và tên:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="251" Height="26" FontSize="16"/>
+                <TextBox x:Name="Name" Margin="6,0,0,0" BorderThickness="1" Width="251" FontSize="16" Padding="0" CharacterCasing="Upper"/>
                 <Label Content="Mã hộ khẩu:" Height="26" Margin="322,0,0,0" Padding="4,0,4,4" FontSize="16" />
-                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="272" Height="26" FontSize="16"/>
+                <TextBox x:Name="HouseholdCode" Margin="6,0,0,0" BorderThickness="1" Width="272" FontSize="16" Padding="0"/>
             </StackPanel>
             <StackPanel Margin="89,103,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
                 <Label Content="Tên gọi khác:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="415" Height="26" FontSize="16"/>
+                <TextBox x:Name="SecondName" Margin="6,0,0,0" Padding="0" BorderThickness="1" Width="415" FontSize="16"/>
                 <Label Content="Quan hệ với chủ hộ:" Height="26" Margin="102,0,0,0" FontSize="16" Padding="4,0,4,4" />
-                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="272" Height="26" FontSize="16"/>
+                <TextBox x:Name="Relative" Margin="6,0,0,0" Padding="0" BorderThickness="1" Width="272" FontSize="16"/>
             </StackPanel>
             <StackPanel Margin="107,146,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
                 <Label Content="Ngày sinh:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Text="__ /__ /____" Margin="6,0,0,0" BorderThickness="1" Height="26" FontSize="16" Padding="0,0,0,4"/>
-                <Button x:Name="btnBirth" Width="26" Height="26" Background="{x:Null}" BorderBrush="{x:Null}" Click="btnBirth_Click" Margin="6,0,0,0">
-                    <Image Width="24" Height="21" Source="../Assets/Images/calendar.png" Margin="-15,-4,-8,-3" HorizontalAlignment="Center" VerticalAlignment="Center"  />
-                </Button>
-                <Popup x:Name="PopupBirthCalendar" StaysOpen="False">
-                    <Calendar x:Name="CalendarControlBirth"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center">
-                    </Calendar>
-                </Popup>
-                <Label Content="Giới tính:" Height="26" Margin="532,0,0,0" FontSize="16"/>
-                <ComboBox Margin="6,0,0,0" BorderThickness="1" Width="227" Height="26" Padding="0,4,5,4" FontSize="16"/>
+                
+                <Border Margin="6,0,0,0" BorderThickness="1" Width="120" BorderBrush="Black" Padding="0">
+                    <DatePicker x:Name="BirthDay" FontSize="16" Padding="5 0 5 0"/>
+                </Border>
+                <Label Content="Giới tính:" Height="26" Margin="489,0,0,0" FontSize="16"/>
+                <ComboBox x:Name="Gender" Margin="6,0,0,0" BorderThickness="1" Width="227" Padding="5 0 10 0" FontSize="16"/>
             </StackPanel>
             <StackPanel Margin="118,189,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
                 <Label Content="Nơi sinh:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Margin="6,0,0,-0.4" BorderThickness="1" Width="946" Height="26" FontSize="16"/>
+                <TextBox x:Name="BirthPlace" Margin="6,0,0,0" Padding="0" BorderThickness="1" Width="946" FontSize="16"/>
             </StackPanel>
             <StackPanel Margin="82,232,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
                 <Label Content="Nguyên quán:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Margin="6,0,0,-0.4" BorderThickness="1" Width="945" Height="26" FontSize="16"/>
+                <TextBox x:Name="NativeVillage" Margin="6,0,0,0" Padding="0" BorderThickness="1" Width="945" Height="26" FontSize="16"/>
             </StackPanel>
             <StackPanel Margin="123,275,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
                 <Label Content="Dân tộc:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="251" Height="26" FontSize="16"/>
+                <TextBox x:Name="Ethnic" Margin="6,0,0,0" Padding="0" BorderThickness="1" Width="251" FontSize="16"/>
                 <Label Content="Quốc tịch:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0" Margin="41,0,0,0"/>
-                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="190" Height="26" FontSize="16"/>
+                <TextBox x:Name="Nationality" Margin="6,0,0,0" Padding="0" BorderThickness="1" Width="190" FontSize="16"/>
                 <Label Content="Tôn giáo:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0" Margin="63,0,0,0"/>
-                <ComboBox Margin="6,0,0,0" BorderThickness="1" Width="235" Height="26" Padding="0,4,6,4" FontSize="16"/>
+                <TextBox x:Name="Religion" Margin="6,0,0,0" BorderThickness="1" Width="235" Padding="0" FontSize="16"/>
             </StackPanel>
             <StackPanel Margin="62,318,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
                 <Label Content="Số CMND/CCCD:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="251" Height="26" FontSize="16"/>
+                <TextBox x:Name="IdentityCode" Margin="6,0,0,0" Padding="0" BorderThickness="1" Width="251" FontSize="16"/>
                 <Label Content="Ngày cấp:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0" Margin="41,0,0,0"/>
-                <TextBox Text="__ /__ /____" Margin="6,0,0,0" BorderThickness="1" Height="26" FontSize="16" Padding="0,0,0,4"/>
-                <Button x:Name="btnDateProvide" Width="26" Height="26" Background="{x:Null}" BorderBrush="{x:Null}" Margin="6,0,0,0" Click="btnDateProvide_Click">
-                    <Image Width="24" Height="21" Source="../Assets/Images/calendar.png" Margin="-15,-4,-8,-3" HorizontalAlignment="Center" VerticalAlignment="Center"  />
-                </Button>
-                <Popup x:Name="PopupDateProvideCalendar" StaysOpen="False">
-                    <Calendar x:Name="CalendarControlDateProvide"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center">
-                    </Calendar>
-                </Popup>
+                <Border Margin="6,0,0,0" BorderThickness="1" Width="120" BorderBrush="Black" Padding="0">
+                    <DatePicker x:Name="ICDate" FontSize="16" Padding="5 0 5 0" />
+                </Border>
+          
                 <Label Content="Nơi cấp:" Height="26" FontSize="16" Padding="4,2,4,0" Margin="81,0,0,0"/>
-                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="306" Height="26" Padding="0,4,6,4" FontSize="16"/>
+                <TextBox x:Name="ICPlace" Margin="6,0,0,0" BorderThickness="1" Width="261" Padding="0" FontSize="16"/>
             </StackPanel>
             <StackPanel Margin="61,361,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
                 <Label Content="Trình độ học vấn:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="251" Height="26" FontSize="16"/>
+                <TextBox x:Name="EducationLevel" Margin="6,0,0,0" Padding="0" BorderThickness="1" Width="251" FontSize="16"/>
                 <Label Content="Trình độ chuyên môn:" Height="26" Margin="221,0,0,0" FontSize="16" Padding="4,0,4,4" />
-                <TextBox Margin="6,0,0,0" BorderThickness="1" Width="306" Height="26" FontSize="16"/>
+                <TextBox x:Name="TechnicalLevel" Padding="0" Margin="6,0,0,0" BorderThickness="1" Width="306" FontSize="16"/>
             </StackPanel>
             <StackPanel Margin="85,404,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
                 <Label Content="Nghề nghiệp:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Margin="6,0,0,-0.4" BorderThickness="1" Width="945" Height="26" FontSize="16"/>
+                <TextBox x:Name="Job" Margin="6,0,0,0" Padding="0" BorderThickness="1" Width="945" FontSize="16"/>
             </StackPanel>
             <StackPanel Margin="91,447,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
                 <Label Content="Nơi làm việc:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Margin="6,0,0,-0.4" BorderThickness="1" Width="946" Height="26" FontSize="16"/>
+                <TextBox x:Name="WorkPlace" Margin="6,0,0,0" Padding="0" BorderThickness="1" Width="946" FontSize="16"/>
             </StackPanel>
             <StackPanel Margin="72,490,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
                 <Label Content="Nơi thường trú:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Margin="6,0,0,-0.4" BorderThickness="1" Width="945" Height="26"/>
+                <TextBox x:Name="PermanentAddress" Margin="6,0,0,0" Padding="0" BorderThickness="1" FontSize="16" Width="945" />
             </StackPanel>
             <StackPanel Margin="82,533,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
                 <Label Content="Nơi ở hiện tại:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Margin="6,0,0,-0.4" BorderThickness="1" Width="945" Height="26"/>
+                <TextBox x:Name="CurrentAddress" Margin="6,0,0,0" Padding="0" BorderThickness="1" FontSize="16" Width="945" />
             </StackPanel>
             <StackPanel Margin="34,576,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
                 <Label Content="Tình trạng hôn nhân:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                <ComboBox Margin="6,0,0,-0.4" BorderThickness="1" Width="251" Height="26" Padding="0,4,6,4"/>
+                <ComboBox  x:Name="Marital" Margin="6,0,0,0" BorderThickness="1" FontSize="16" Width="251" Padding="5,0,10,0"/>
             </StackPanel>
             <StackPanel Margin="123,619,0,0" Orientation="Horizontal" Height="123" VerticalAlignment="Top">
                 <Label Content="Ghi chú:" Height="26" VerticalAlignment="Center" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox Margin="6,0,0,0.2" BorderThickness="1" Width="945" Height="123"/>
+                <TextBox x:Name="Note" Margin="6,0,0,0" BorderThickness="1" Width="945" Height="123"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,754,0,0">
-                <Button Style="{x:Null}" Background="#FF87C5FF" BorderBrush="Black" Foreground="Black" Margin="486,0,0,0" Width="98" Height="40">
+            <StackPanel Orientation="Horizontal" Margin="0,740,0,0">
+                <Button x:Name="Save" Style="{x:Null}" Background="#FF87C5FF" BorderBrush="Black" Foreground="Black" Margin="486,0,0,0" Width="98" Height="40">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="../Assets/Images/save.png" Width="24" Height="24"/>
                         <TextBlock FontSize="18" Text="Lưu" Margin="5,0,0,0" Padding="6,0,0,0"/>
                     </StackPanel>
                 </Button>
-                <Button Style="{x:Null}" Background="#FFFF8787" BorderBrush="Black" Foreground="Black" Margin="46,0,0,0" Width="98" Height="40">
+                <Button x:Name="Close" Style="{x:Null}" Background="#FFFF8787" BorderBrush="Black" Foreground="Black" Margin="46,0,0,0" Width="98" Height="40">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="../Assets/Images/delete.png" Width="24" Height="24"/>
                         <TextBlock FontSize="18" Text="Thoát" Margin="5,0,0,0" Padding="6,0,0,0"/>

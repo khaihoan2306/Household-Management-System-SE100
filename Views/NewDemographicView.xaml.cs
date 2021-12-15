@@ -22,16 +22,6 @@ namespace Household_Management_System.Views
         public NewDemographicView()
         {
             InitializeComponent();
-        }
-
-        private void btnBirth_Click(object sender, RoutedEventArgs e)
-        {
-            PopupBirthCalendar.IsOpen = true;
-        }
-
-        private void btnDateProvide_Click(object sender, RoutedEventArgs e)
-        {
-            PopupDateProvideCalendar.IsOpen = true;
-        }
+        }     
     }
 }

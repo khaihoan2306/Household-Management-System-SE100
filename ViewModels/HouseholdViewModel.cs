@@ -59,7 +59,7 @@ namespace Household_Management_System.ViewModels
         }
         public HouseholdViewModel(string username)
         {
-            currentUser = LocalPoliceAccess.LoadPolice(username)[0];
+            currentUser = LocalPoliceAccess.LoadPolice(username);
             listHousehold = HouseholdAccess.LoadHousehold();
             listVillage = new List<string>();
             listVillage.Add("-- Tất cả --");

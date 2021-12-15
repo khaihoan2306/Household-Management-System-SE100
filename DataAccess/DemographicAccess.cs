@@ -16,7 +16,7 @@ namespace Household_Management_System.DataAccess
         {
             text = text.ToLower();
             string name = text.ToUpper();
-            string query = @"SELECT IdentityCode, Name, SecondName, Household.HouseholdCode, Gender, BirthDay, Relative, BirthPlace, NativeVillage, Ethnic, Religion, Nationality, CurrentAddress, EducationLevel, TechnicalLevel, Job, WorkPlace, MaritalStatus, LivingStatus, Demographic.Note
+            string query = @"SELECT IdentityCode, ICDate, ICPlace, Name, SecondName, Household.HouseholdCode, Gender, BirthDay, Relative, BirthPlace, NativeVillage, Ethnic, Religion, Nationality, CurrentAddress, PermanentAddress, EducationLevel, TechnicalLevel, Job, WorkPlace, MaritalStatus, LivingStatus, Demographic.Note
                             FROM Household, Demographic 
                             WHERE (IdentityCode like '%" + text + "%' or Name like '%" + name + "%' or Gender like '%" + text + "%' or BirthDay like '%" + text + "%' or Ethnic like '%" + text + "%' or LivingStatus like '%" + text + "%' or NativeVillage like '%" + text + "%' or Demographic.HouseholdCode like '%" + text + "%' or Relative like '%" + text + "%') " +
                             "and Household.HouseholdCode = Demographic.HouseholdCode and Household.Village like '%"+village+"%'";
@@ -26,7 +26,13 @@ namespace Household_Management_System.DataAccess
                 return output.ToList();
             }
         }
-        
+        public static void SavePerson(DemographicModel person)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("insert into Demographic values (@IdentityCode, @ICDate, @ICPlace, @Name, @SecondName, @HouseholdCode, @Gender, @BirthDay, @Relative, @BirthPlace, @NativeVillage, @Ethnic, @Religion, @Nationality, @CurrentAddress, @PermanentAddress, @EducationLevel, @TechnicalLevel, @Job, @WorkPlace, @MaritalStatus, @LivingStatus, @Note)", person);
+            }
+        }
         private static string LoadConnectionString(string id = "Default")
         {
             string connectionString = "Data Source=";

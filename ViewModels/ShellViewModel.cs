@@ -24,7 +24,7 @@ namespace Household_Management_System.ViewModels
         {
             _username = username;
             ActivateItemAsync(new DashboardViewModel(_username, this));
-            currentUser = LocalPoliceAccess.LoadPolice(_username)[0];
+            currentUser = LocalPoliceAccess.LoadPolice(_username);
             SetUserInfo();
         }
         private void SetUserInfo()

@@ -8,11 +8,13 @@ namespace Household_Management_System.Models
 {
     public class DemographicModel
     {
-        private string identityCode, name, secondName, householdCode, gender, birthDay, relative, birthPlace, nativeVillage, ethnic, religion, nationality, currentAddress, educationLevel, technicalLevel, job, workPlace, maritalStatus, livingStatus, note;
+        private string identityCode, iCDate, iCPlace, name, secondName, householdCode, gender, birthDay, relative, birthPlace, nativeVillage, ethnic, religion, nationality, currentAddress, permanentAddress, educationLevel, technicalLevel, job, workPlace, maritalStatus, livingStatus, note;
 
-        public DemographicModel(string identityCode, string name, string secondName, string householdCode, string gender, string birthDay, string relative, string birthPlace, string nativeVillage, string ethnic, string religion, string nationality, string currentAddress, string educationLevel, string technicalLevel, string job, string workPlace, string maritalStatus, string livingStatus, string note)
+        public DemographicModel(string identityCode, string iCDate, string iCPlace, string name, string secondName, string householdCode, string gender, string birthDay, string relative, string birthPlace, string nativeVillage, string ethnic, string religion, string nationality, string currentAddress, string permanentAddress, string educationLevel, string technicalLevel, string job, string workPlace, string maritalStatus, string livingStatus, string note)
         {
             this.IdentityCode = identityCode;
+            this.ICDate = iCDate;
+            this.ICPlace = iCPlace;
             this.Name = name;
             this.SecondName = secondName;
             this.HouseholdCode = householdCode;
@@ -25,6 +27,7 @@ namespace Household_Management_System.Models
             this.Religion = religion;
             this.Nationality = nationality;
             this.CurrentAddress = currentAddress;
+            this.PermanentAddress = permanentAddress;
             this.EducationLevel = educationLevel;
             this.TechnicalLevel = technicalLevel;
             this.Job = job;
@@ -34,6 +37,8 @@ namespace Household_Management_System.Models
             this.Note = note;
         }
         public string IdentityCode { get => identityCode; set => identityCode = value; }
+        public string ICDate { get => iCDate; set => iCDate = value; }
+        public string ICPlace { get => iCPlace; set => iCPlace = value; }
         public string Name { get => name; set => name = value; }
         public string SecondName { get => secondName; set => secondName = value; }
         public string HouseholdCode { get => householdCode; set => householdCode = value; }
@@ -45,7 +50,8 @@ namespace Household_Management_System.Models
         public string Ethnic { get => ethnic; set => ethnic = value; }
         public string Religion { get => religion; set => religion = value; }
         public string Nationality { get => nationality; set => nationality = value; }
-        public string CurrentAddress { get => currentAddress; set => currentAddress = value; }
+        public string CurrentAddress { get => currentAddress; set => currentAddress = value; }  
+        public string PermanentAddress { get => permanentAddress; set => permanentAddress = value; }
         public string EducationLevel { get => educationLevel; set => educationLevel = value; }
         public string TechnicalLevel { get => technicalLevel; set => technicalLevel = value; }
         public string Job { get => job; set => job = value; }
