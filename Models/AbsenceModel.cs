@@ -8,27 +8,36 @@ namespace Household_Management_System.Models
 {
     public class AbsenceModel
     {
-        private string absenceName, identityCode, birthDay, address, gender, toDay, fromDay, reasonAbsence;
-        public AbsenceModel(string absenceName, string identityCode, string birthDay,  string gender, string address, string toDay, string fromDay, string reasonAbsence)
+        private string name, identityCode, birthDay, gender, permanentAddress, shelterAddress, currentAddress, reasonAbsence, fromDay, toDay, destination, note;
+
+        public AbsenceModel(string name, string identityCode, string birthDay, string gender, string permanentAddress, string shelterAddress, string currentAddress, string reasonAbsence, string fromDay, string toDay, string destination, string note)
         {
-            this.AbsenceName = absenceName;
+            this.Name = name;
             this.IdentityCode = identityCode;
             this.BirthDay = birthDay;
-            this.Address = address;
             this.Gender = gender;
-            this.ToDay = toDay;
-            this.FromDay = fromDay;
+            this.PermanentAddress = permanentAddress;
+            this.ShelterAddress = shelterAddress;
+            this.CurrentAddress = currentAddress;
             this.ReasonAbsence = reasonAbsence;
+            this.FromDay = fromDay;
+            this.ToDay = toDay;
+            this.Destination = destination;
+            this.Note = note;
         }
 
-        public string AbsenceName { get => absenceName; set => absenceName = value; }
+        public string Name { get => name; set => name = value; }
         public string IdentityCode { get => identityCode; set => identityCode = value; }
         public string BirthDay { get => birthDay; set => birthDay = value; }
-        public string Address { get => address; set => address = value; }
         public string Gender { get => gender; set => gender = value; }
-        public string ToDay { get => toDay; set => toDay = value; }
-        public string FromDay { get => fromDay; set => fromDay = value; }
+        public string PermanentAddress { get => permanentAddress; set => permanentAddress = value; }
+        public string ShelterAddress { get => shelterAddress; set => shelterAddress = value; }
+        public string CurrentAddress { get => currentAddress; set => currentAddress = value; }
         public string ReasonAbsence { get => reasonAbsence; set => reasonAbsence = value; }
+        public string FromDay { get => fromDay; set => fromDay = value; }
+        public string ToDay { get => toDay; set => toDay = value; }
+        public string Destination { get => destination; set => destination = value; }
+        public string Note { get => note; set => note = value; }
     }
 }
 

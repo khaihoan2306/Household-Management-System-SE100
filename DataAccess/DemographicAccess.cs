@@ -33,6 +33,15 @@ namespace Household_Management_System.DataAccess
                 cnn.Execute("insert into Demographic values (@IdentityCode, @ICDate, @ICPlace, @Name, @SecondName, @HouseholdCode, @Gender, @BirthDay, @Relative, @BirthPlace, @NativeVillage, @Ethnic, @Religion, @Nationality, @CurrentAddress, @PermanentAddress, @EducationLevel, @TechnicalLevel, @Job, @WorkPlace, @MaritalStatus, @LivingStatus, @Note)", person);
             }
         }
+        public static bool CheckPerson(string identityCode, string name, string birthDay, string gender)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<string>("select Name from Demographic where IdentityCode='"+identityCode+"' and Name='"+name+"' and BirthDay='"+birthDay+"' and Gender='"+gender+"'", new DynamicParameters());
+                if (output.FirstOrDefault() == null) return false;
+                return true;
+            }
+        }
         private static string LoadConnectionString(string id = "Default")
         {
             string connectionString = "Data Source=";

@@ -86,6 +86,18 @@ namespace Household_Management_System.ViewModels
             exit = "Quay lại";
             NotifyOfPropertyChange(() => Exit);
         }
+        public void TemporaryAbsenceChangeView()
+        {
+            ActivateItemAsync(new AbsenceViewModel(_username));
+            exit = "Quay lại";
+            NotifyOfPropertyChange(() => Exit);
+        }
+        public void TemporaryResidenceChangeView()
+        {
+            ActivateItemAsync(new ResidenceViewModel());
+            exit = "Quay lại";
+            NotifyOfPropertyChange(() => Exit);
+        }
         protected override Task OnDeactivateAsync(bool close, CancellationToken cancellationToken)
         {
             Environment.Exit(0);
