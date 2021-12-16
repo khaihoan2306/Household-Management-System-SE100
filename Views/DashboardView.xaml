@@ -55,7 +55,7 @@
                     </Border>
                     <Border Width="95" Height="120" BorderThickness="2" BorderBrush="Black" CornerRadius="10"
                     VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5 0 20 0">
-                        <Button Style="{x:Null}" BorderBrush="Transparent" Background="Transparent">
+                        <Button x:Name="TemporaryResidence" Style="{x:Null}" BorderBrush="Transparent" Background="Transparent">
                             <StackPanel>
                                 <Image Source="../Assets/Images/temporaryResidence.png" Width="64" />
                                 <TextBlock FontSize="14" TextAlignment="Center">Quản lý <LineBreak /> Tạm trú</TextBlock>
@@ -64,7 +64,7 @@
                     </Border>
                     <Border Width="95" Height="120" BorderThickness="2" BorderBrush="Black" CornerRadius="10"
                     VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5 0 20 0">
-                        <Button Style="{x:Null}" BorderBrush="Transparent" Background="Transparent">
+                        <Button x:Name="TemporaryAbsence" Style="{x:Null}" BorderBrush="Transparent" Background="Transparent">
                             <StackPanel>
                                 <Image Source="../Assets/Images/temporaryAbsence.png" Width="64" />
                                 <TextBlock FontSize="14" TextAlignment="Center">Quản lý <LineBreak />Tạm vắng</TextBlock>
@@ -73,7 +73,7 @@
                     </Border>
                     <Border Width="95" Height="120" BorderThickness="2" BorderBrush="Black" CornerRadius="10"
                     VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5 0 5 0">
-                        <Button Style="{x:Null}" BorderBrush="Transparent" Background="Transparent">
+                        <Button x:Name="MilitaryService" Style="{x:Null}" BorderBrush="Transparent" Background="Transparent">
                             <StackPanel>
                                 <Image Source="../Assets/Images/military.png" Width="64" />
                                 <TextBlock FontSize="14" TextAlignment="Center">Quản lý<LineBreak/> NVQS</TextBlock>

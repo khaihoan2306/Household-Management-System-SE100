@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         ResizeMode="CanMinimize" 
         Title="Phần mềm quản lý hộ khẩu" Height="810" Width="1540" WindowState="Maximized">
-    <Grid Background="White">
+    <Grid Background="#f8f4fc">
         <DockPanel>
             <Menu Height="28" DockPanel.Dock="Top" Background="#7EEA6C">
                 <Menu.ItemsPanel>

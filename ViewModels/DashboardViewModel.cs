@@ -88,6 +88,14 @@ namespace Household_Management_System.ViewModels
         {
             _shell.DemographicChangeView();
         }
+        public void TemporaryAbsence()
+        {
+            _shell.TemporaryAbsenceChangeView();
+        }
+        public void TemporaryResidence()
+        {
+            _shell.TemporaryResidenceChangeView();
+        }
         public void Permanent()
         {
             IWindowManager manager = new WindowManager();

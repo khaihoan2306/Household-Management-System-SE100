@@ -94,6 +94,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataAccess\AbsenceAccess.cs" />
     <Compile Include="DataAccess\DemographicAccess.cs" />
     <Compile Include="DataAccess\HouseholdAccess.cs" />
     <Compile Include="DataAccess\HouseholdDetailAccess.cs" />
@@ -107,12 +108,15 @@
     <Compile Include="Models\LocalPoliceModel.cs" />
     <Compile Include="Models\MilitaryServiceModel.cs" />
     <Compile Include="Models\ResidenceModel.cs" />
+    <Compile Include="ViewModels\AbsenceViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\DemographicViewModel.cs" />
     <Compile Include="ViewModels\HouseholdViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\NewAbsenceViewModel.cs" />
     <Compile Include="ViewModels\NewDemographicViewModel.cs" />
     <Compile Include="ViewModels\NewHouseholdViewModel.cs" />
+    <Compile Include="ViewModels\ResidenceViewModel.cs" />
     <Compile Include="ViewModels\SettingViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\AbsenceView.xaml.cs">
