@@ -8,25 +8,28 @@ namespace Household_Management_System.Models
 {
     public class ResidenceModel
     {
-        private string absenceName, identityCode, birthDay, address, gender, shelter, arrivalDate;
-        public ResidenceModel(string absenceName, string identityCode, string birthDay, string gender, string address, string shelter, string arrivalDate)
+        private string identityCode, name, birthDay, gender, permanentAddress, shelterAddress, arrivalDay, note;
+
+        public ResidenceModel(string identityCode, string name, string birthDay, string gender, string permanentAddress, string shelterAddress, string arrivalDay, string note)
         {
-            this.AbsenceName = absenceName;
             this.IdentityCode = identityCode;
+            this.Name = name;
             this.BirthDay = birthDay;
-            this.Address = address;
             this.Gender = gender;
-            this.Shelter = shelter;
-            this.ArrivalDate = arrivalDate;
+            this.PermanentAddress = permanentAddress;
+            this.ShelterAddress = shelterAddress;
+            this.ArrivalDay = arrivalDay;
+            this.Note = note;
         }
 
-        public string AbsenceName { get => absenceName; set => absenceName = value; }
         public string IdentityCode { get => identityCode; set => identityCode = value; }
+        public string Name { get => name; set => name = value; }
         public string BirthDay { get => birthDay; set => birthDay = value; }
-        public string Address { get => address; set => address = value; }
         public string Gender { get => gender; set => gender = value; }
-        public string Shelter { get => shelter; set => shelter = value; }
-        public string ArrivalDate { get => arrivalDate; set => arrivalDate = value; }
+        public string PermanentAddress { get => permanentAddress; set => permanentAddress = value; }
+        public string ShelterAddress { get => shelterAddress; set => shelterAddress = value; }
+        public string ArrivalDay { get => arrivalDay; set => arrivalDay = value; }
+        public string Note { get => note; set => note = value; }
     }
 }
 

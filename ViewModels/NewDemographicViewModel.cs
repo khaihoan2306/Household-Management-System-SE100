@@ -16,6 +16,7 @@ namespace Household_Management_System.ViewModels
         private string identityCode, iCDate, iCPlace, name, secondName="", householdCode, birthDay, relative, birthPlace, nativeVillage, ethnic, religion, nationality, currentAddress, permanentAddress, educationLevel, technicalLevel, job, workPlace, livingStatus, note;
         private List<string> listGender, listMarital;
         private string _selectedGender, _selectedMarital;
+        private int _code = 0;
      
         public BindableCollection<string> Gender { get; set; }
         public BindableCollection<string> Marital { get; set; }
@@ -297,8 +298,9 @@ namespace Household_Management_System.ViewModels
         }
         public NewDemographicViewModel(int code = 0)
         {
-            if (code == 0) livingStatus = "Thường trú";
-            else if (code == 1) livingStatus = "Tạm trú";
+            _code = code;
+            if (_code == 0) livingStatus = "Thường trú";
+            else if (_code == 1) livingStatus = "Tạm trú";
             AddListCombobox();
         }
         private void AddListCombobox()
@@ -332,6 +334,12 @@ namespace Household_Management_System.ViewModels
                 DateTime dtICDate = DateTime.ParseExact(iCDate, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
                 DemographicModel person = new DemographicModel(identityCode, dtICDate.ToString("dd/MM/yyyy"), iCPlace, name, secondName, householdCode, _selectedGender, dtBirthDay.ToString("dd/MM/yyyy"), relative, birthPlace, nativeVillage, ethnic, religion, nationality, currentAddress, permanentAddress, educationLevel, technicalLevel, job, workPlace, _selectedMarital, livingStatus, note);
                 DemographicAccess.SavePerson(person);
+                if (_code == 1)
+                {
+                    string shelterAddress = HouseholdAccess.LoadAddress(householdCode);
+                    ResidenceModel residence = new ResidenceModel(identityCode, name, birthDay, _selectedGender, permanentAddress, shelterAddress, DateTime.Now.ToString("dd/MM/yyyy"), "");
+                    ResidenceAccess.SavePerson(residence);
+                }
                 MessageBox.Show("Đã thêm nhân khẩu thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 TryCloseAsync();
             }

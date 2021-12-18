@@ -33,6 +33,14 @@ namespace Household_Management_System.DataAccess
                 return false;
             }
         }
+        public static string LoadAddress(string householdCode)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<string>("select Address from Household where HouseholdCode='" + householdCode + "'", new DynamicParameters());
+                return output.FirstOrDefault();
+            }
+        }
         public static void SaveHousehold(HouseholdModel household)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))

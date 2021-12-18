@@ -83,7 +83,7 @@ namespace Household_Management_System.ViewModels
         public void Delete()
         {
             if (SelectedPerson == null)
-                MessageBox.Show("Vui lòng chọn một hộ khẩu để xóa!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Vui lòng chọn một nhân khẩu để xóa!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             else
             {
                 MessageBoxResult mr = MessageBox.Show("Bạn có muốn xóa nhân khẩu tạm vắng này?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);

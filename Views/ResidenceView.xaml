@@ -27,7 +27,7 @@
             </StackPanel>
 
         </DockPanel>
-        <DataGrid x:Name="AbsenceList" Style="{x:Null}" AutoGenerateColumns="False"  SelectionUnit="FullRow" BorderThickness="1" BorderBrush="Black" Height="550" Margin="0 20 0 0" 
+        <DataGrid x:Name="ResidenceList" Style="{x:Null}" AutoGenerateColumns="False"  SelectionUnit="FullRow" BorderThickness="1" BorderBrush="Black" Height="550" Margin="0 20 0 0" 
                   IsReadOnly="True" SelectedItem="{Binding SelectedHousehold}" Background="White">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -38,13 +38,14 @@
             </DataGrid.ColumnHeaderStyle>
 
             <DataGrid.Columns>
-                <DataGridTextColumn Width="auto" Header="Họ và Tên"/>
-                <DataGridTextColumn Width="auto" Header="CMND/CCCD"/>
-                <DataGridTextColumn Width="auto" Header="Ngày sinh"/>
-                <DataGridTextColumn Width="auto" Header="Giới tính"/>
-                <DataGridTextColumn Width="*" Header="Nơi thường trú"/>
-                <DataGridTextColumn Width="*" Header="Nơi tạm trú"/>
-                <DataGridTextColumn Width="auto" Header="Ngày đến"/>
+                <DataGridTextColumn Width="auto" Header="Họ và Tên" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Width="auto" Header="CMND/CCCD" Binding="{Binding Path=IdentityCode}"/>
+                <DataGridTextColumn Width="auto" Header="Ngày sinh" Binding="{Binding Path=BirthDay}"/>
+                <DataGridTextColumn Width="auto" Header="Giới tính" Binding="{Binding Path=Gender}"/>
+                <DataGridTextColumn Width="auto" Header="Ngày đến" Binding="{Binding Path=ArrivalDay}"/>
+                <DataGridTextColumn Width="*" Header="Nơi thường trú" Binding="{Binding Path=PermanentAddress}"/>
+                <DataGridTextColumn Width="*" Header="Nơi tạm trú" Binding="{Binding Path=ShelterAddress}"/>
+                
             </DataGrid.Columns>
 
         </DataGrid>
