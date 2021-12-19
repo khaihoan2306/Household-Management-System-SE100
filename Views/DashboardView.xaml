@@ -88,7 +88,7 @@
                     <Button Style="{x:Null}" BorderBrush="Transparent" Background="Transparent">
                         <StackPanel>
                             <Image Source="../Assets/Images/report.png" Width="64" />
-                            <TextBlock FontSize="14" TextAlignment="Center">Lập<LineBreak/> Báo cáo</TextBlock>
+                            <TextBlock FontSize="14" TextAlignment="Center" Margin="0 8 0 0">Báo cáo</TextBlock>
                         </StackPanel>
                     </Button>
                 </Border>
@@ -97,7 +97,7 @@
                     <Button x:Name="Setting" Style="{x:Null}" BorderBrush="Transparent" Background="Transparent">
                         <StackPanel>
                             <Image Source="../Assets/Images/setting.png" Width="64" />
-                            <TextBlock FontSize="14" TextAlignment="Center">Cài đặt<LineBreak/> Tài khoản</TextBlock>
+                            <TextBlock FontSize="14" TextAlignment="Center">Thông tin<LineBreak/> Tài khoản</TextBlock>
                         </StackPanel>
                     </Button>
                 </Border>

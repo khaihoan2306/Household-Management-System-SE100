@@ -7,6 +7,7 @@
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="NewDemographicView" Height="820" Width="1214" WindowStyle="None" ResizeMode="NoResize" BorderThickness="1">
     <Grid>
+        
         <Grid>
             <StackPanel Background="#FF7EEA6C" Width="1214" Height="27" VerticalAlignment="Top">
                 <Label Content="Thêm mới nhân khẩu" Background="{x:Null}" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
@@ -25,9 +26,9 @@
             </StackPanel>
             <StackPanel Margin="107,146,0,0" Orientation="Horizontal" Height="26" VerticalAlignment="Top">
                 <Label Content="Ngày sinh:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0"/>
-                
+
                 <Border Margin="6,0,0,0" BorderThickness="1" Width="120" BorderBrush="Black" Padding="0">
-                    <DatePicker x:Name="BirthDay" FontSize="16" Padding="5 0 5 0"/>
+                    <DatePicker x:Name="BirthDay" FontSize="16" Padding="5 0 5 0" />
                 </Border>
                 <Label Content="Giới tính:" Height="26" Margin="521,0,0,0" FontSize="16"/>
                 <ComboBox x:Name="Gender" Margin="6,0,0,0" BorderThickness="1" Width="227" Padding="5 0 10 0" FontSize="16"/>
@@ -55,7 +56,7 @@
                 <Border Margin="6,0,0,0" BorderThickness="1" Width="120" BorderBrush="Black" Padding="0">
                     <DatePicker x:Name="ICDate" FontSize="16" Padding="5 0 5 0" />
                 </Border>
-          
+
                 <Label Content="Nơi cấp:" Height="26" FontSize="16" Padding="4,2,4,0" Margin="115,0,0,0"/>
                 <TextBox x:Name="ICPlace" Margin="6,0,0,0" BorderThickness="1" Width="261" Padding="0" FontSize="16"/>
             </StackPanel>

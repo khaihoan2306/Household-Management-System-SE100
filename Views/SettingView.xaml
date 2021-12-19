@@ -5,8 +5,85 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Household_Management_System.Views"
              mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="700" d:DesignWidth="1500">
     <Grid>
-        <Label Content="Dfadsfa"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Column="0" Style="{x:Null}" Header="Thông tin người dùng" FontSize="24" Width="auto" BorderThickness="3">
+            <StackPanel Margin="10 20 0 20" Width="auto" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Content="Họ và tên:" VerticalAlignment="Center" FontSize="18" Padding="4,2,4,0"/>
+                    <Label x:Name="Name" Margin="6,0,0,0" Width="500" FontSize="18" Padding="5" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0" HorizontalAlignment="Right">
+                    <Label Content="Số CMND/CCCD:" VerticalAlignment="Center" FontSize="18" Padding="4,2,4,0"/>
+                    <Label x:Name="IdentityCode" Margin="6,0,0,0" Width="500" FontSize="18" Padding="5" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0" HorizontalAlignment="Right">
+                    <Label Content="Ngày sinh:" VerticalAlignment="Center" FontSize="18" Padding="4,2,4,0"/>
+                    <Label x:Name="BirthDay" Margin="6,0,0,0" Width="500" FontSize="18" Padding="5" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0" HorizontalAlignment="Right">
+                    <Label Content="Điện thoại:" VerticalAlignment="Center" FontSize="18" Padding="4,2,4,0"/>
+                    <Label x:Name="Phone" Margin="6,0,0,0" Width="500" FontSize="18" Padding="5" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0" HorizontalAlignment="Right">
+                    <Label Content="Địa chỉ:" VerticalAlignment="Center" FontSize="18" Padding="4,2,4,0"/>
+                    <Label x:Name="Address" Margin="6,0,0,0" BorderThickness="1" Width="500" FontSize="18" Padding="5" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0" HorizontalAlignment="Right">
+                    <Label Content="Giới tính:" VerticalAlignment="Center" FontSize="18" Padding="4,2,4,0"/>
+                    <Label x:Name="Gender" Margin="6,0,0,0" Width="500" FontSize="18" Padding="5" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0" HorizontalAlignment="Right">
+                    <Label Content="Chức vụ:" VerticalAlignment="Center" FontSize="18" Padding="4,2,4,0"/>
+                    <Label x:Name="Position" Margin="6,0,0,0" Width="500" FontSize="18" Padding="5" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0" HorizontalAlignment="Right">
+                    <Label Content="Tỉnh/Thành phố quản lý:" VerticalAlignment="Center" FontSize="18" Padding="4,2,4,0"/>
+                    <Label x:Name="ProvinceManage" Margin="6,0,0,0" Width="500" FontSize="18" Padding="5" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0" HorizontalAlignment="Right">
+                    <Label Content="Quận/Huyện quản lý:" VerticalAlignment="Center" FontSize="18" Padding="4,2,4,0"/>
+                    <Label x:Name="DistrictManage" Margin="6,0,0,0" Width="500" FontSize="18" Padding="5" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0" HorizontalAlignment="Right">
+                    <Label Content="Phường/Xã quản lý:" VerticalAlignment="Center" FontSize="18" Padding="4,2,4,0"/>
+                    <Label x:Name="WardManage" Margin="6,0,0,0" Width="500" FontSize="18" Padding="5" />
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Left">
+            <StackPanel Orientation="Horizontal" Margin="0 20 0 0" HorizontalAlignment="Right">
+                <Label Content="Mật khẩu cũ:" VerticalAlignment="Center" FontSize="18" Padding="4,2,4,0"/>
+                <PasswordBox
+                    x:Name="OldPassword" Width="200" BorderThickness="1"  
+                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"                        
+                    />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 20 0 0" HorizontalAlignment="Right">
+                <Label Content="Mật khẩu mới:" VerticalAlignment="Center" FontSize="18" Padding="4,2,4,0"/>
+                <PasswordBox
+                    x:Name="NewPassword" Width="200" BorderThickness="1"                   
+                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"                         
+                    />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 20 0 0" HorizontalAlignment="Right">
+                <Label Content="Xác nhận:" VerticalAlignment="Center" FontSize="18" Padding="4,2,4,0"/>
+                <PasswordBox
+                    x:Name="ConfirmPassword" Width="200" BorderThickness="1"                   
+                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"                         
+                    />
+            </StackPanel>
+            <Button x:Name="ChangePassword" Style="{StaticResource CustomButton}" Width="200" HorizontalAlignment="Right" Margin="0 20 0 0">
+                <StackPanel Orientation="Horizontal" Margin="10 0 10 0">
+                    <Image Source="../Assets/Images/key.png" Width="32" Height="32"/>
+                    <TextBlock FontSize="20" Text="Đổi mật khẩu" Margin="5,0,0,0" Padding="5"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -83,7 +83,7 @@ namespace Household_Management_System.ViewModels
         }
         public void DemographicChangeView()
         {
-            ActivateItemAsync(new DemographicViewModel(_username));
+            ActivateItemAsync(new DemographicViewModel(_username, this));
             exit = "Quay lại";
             NotifyOfPropertyChange(() => Exit);
         }
@@ -99,6 +99,23 @@ namespace Household_Management_System.ViewModels
             exit = "Quay lại";
             NotifyOfPropertyChange(() => Exit);
         }
-        
+        public void MilitaryServiceChangeView()
+        {
+            ActivateItemAsync(new MilitaryServiceViewModel(_username));
+            exit = "Quay lại";
+            NotifyOfPropertyChange(() => Exit);
+        }
+        public void SettingChangeView()
+        {
+            ActivateItemAsync(new SettingViewModel(_username));
+            exit = "Quay lại";
+            NotifyOfPropertyChange(() => Exit);
+        }
+        public void SettingAdminChangeView()
+        {
+            MessageBox.Show("Dang phat trien");
+            /*exit = "Quay lại";
+            NotifyOfPropertyChange(() => Exit);*/
+        }
     }
 }

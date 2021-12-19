@@ -17,9 +17,19 @@ namespace Household_Management_System.ViewModels
         private List<string> listGender, listMarital;
         private string _selectedGender, _selectedMarital;
         private int _code = 0;
+        private string _identityCode;
+        private DemographicViewModel _demographicVM;
      
         public BindableCollection<string> Gender { get; set; }
         public BindableCollection<string> Marital { get; set; }
+        public string Title
+        {
+            get
+            {
+                if (_code == 2) return "Thông tin nhân khẩu";
+                else return "Thêm mới nhân khẩu";
+            }
+        }
         public string IdentityCode
         {
             get
@@ -40,7 +50,8 @@ namespace Household_Management_System.ViewModels
             }
             set
             {
-                iCDate = value;
+                DateTime dateTime = DateTime.ParseExact(value, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                iCDate = dateTime.ToString("dd/MM/yyyy");
                 NotifyOfPropertyChange(() => ICDate);
             }
         }
@@ -100,7 +111,8 @@ namespace Household_Management_System.ViewModels
             }
             set
             {
-                birthDay = value;
+                DateTime dateTime = DateTime.ParseExact(value, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                birthDay = dateTime.ToString("dd/MM/yyyy");
                 NotifyOfPropertyChange(() => BirthDay);
             }
         }
@@ -296,12 +308,51 @@ namespace Household_Management_System.ViewModels
                 NotifyOfPropertyChange(() => SelectedMarital);
             }
         }
-        public NewDemographicViewModel(int code = 0)
+        public NewDemographicViewModel(int code = 0, string identityCode="", DemographicViewModel demographicVM = null)
         {
+            _demographicVM = demographicVM;
             _code = code;
+            _identityCode = identityCode;
+            AddListCombobox();
             if (_code == 0) livingStatus = "Thường trú";
             else if (_code == 1) livingStatus = "Tạm trú";
-            AddListCombobox();
+            else if (_code == 2)
+            {
+                ViewDetailPerson();
+            }
+            
+        }
+        private void ViewDetailPerson()
+        {
+            DemographicModel person = DemographicAccess.LoadPerson(_identityCode);
+            DateTime dtBirthDay, dtICDate;
+            try { dtBirthDay = DateTime.ParseExact(person.BirthDay, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
+            catch { dtBirthDay = DateTime.ParseExact(person.BirthDay, "MM/dd/yyyy", CultureInfo.InvariantCulture); }
+            try { dtICDate = DateTime.ParseExact(person.ICDate, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
+            catch { dtICDate = DateTime.ParseExact(person.ICDate, "MM/dd/yyyy", CultureInfo.InvariantCulture); }
+            identityCode = person.IdentityCode;
+            name = person.Name;
+            secondName = person.SecondName;
+            householdCode = person.HouseholdCode;    
+            iCPlace = person.ICPlace;
+            birthDay = dtBirthDay.ToString("dd/MM/yyyy");
+            iCDate = dtICDate.ToString("dd/MM/yyyy");
+            relative = person.Relative;
+            birthPlace = person.BirthPlace;
+            nativeVillage = person.NativeVillage;
+            ethnic = person.Ethnic;
+            religion = person.Religion;
+            nationality = person.Nationality;
+            currentAddress = person.CurrentAddress;
+            permanentAddress = person.PermanentAddress;
+            educationLevel = person.EducationLevel;
+            technicalLevel = person.TechnicalLevel;
+            job = person.Job;
+            workPlace = person.WorkPlace;
+            livingStatus = person.LivingStatus;
+            _selectedGender = person.Gender;
+            _selectedMarital = person.MaritalStatus;
+            note = person.Note;
         }
         private void AddListCombobox()
         {
@@ -330,18 +381,26 @@ namespace Household_Management_System.ViewModels
         {
             if (CanSave()) 
             {
-                DateTime dtBirthDay = DateTime.ParseExact(birthDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
-                DateTime dtICDate = DateTime.ParseExact(iCDate, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
-                DemographicModel person = new DemographicModel(identityCode, dtICDate.ToString("dd/MM/yyyy"), iCPlace, name, secondName, householdCode, _selectedGender, dtBirthDay.ToString("dd/MM/yyyy"), relative, birthPlace, nativeVillage, ethnic, religion, nationality, currentAddress, permanentAddress, educationLevel, technicalLevel, job, workPlace, _selectedMarital, livingStatus, note);
-                DemographicAccess.SavePerson(person);
-                if (_code == 1)
+                if (_code != 2)
                 {
-                    string shelterAddress = HouseholdAccess.LoadAddress(householdCode);
-                    ResidenceModel residence = new ResidenceModel(identityCode, name, birthDay, _selectedGender, permanentAddress, shelterAddress, DateTime.Now.ToString("dd/MM/yyyy"), "");
-                    ResidenceAccess.SavePerson(residence);
+                    DemographicModel person = new DemographicModel(identityCode, iCDate, iCPlace, name, secondName, householdCode, _selectedGender, birthDay, relative, birthPlace, nativeVillage, ethnic, religion, nationality, currentAddress, permanentAddress, educationLevel, technicalLevel, job, workPlace, _selectedMarital, livingStatus, note);
+                    DemographicAccess.SavePerson(person);
+                    if (_code == 1)
+                    {
+                        string shelterAddress = HouseholdAccess.LoadAddress(householdCode);
+                        ResidenceModel residence = new ResidenceModel(identityCode, name, birthDay, _selectedGender, permanentAddress, shelterAddress, DateTime.Now.ToString("M/d/yyyy HH:mm:ss"), "");
+                        ResidenceAccess.SavePerson(residence);
+                    }
+                    MessageBox.Show("Đã thêm nhân khẩu thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                MessageBox.Show("Đã thêm nhân khẩu thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                {
+                    DemographicModel person = new DemographicModel(identityCode, iCDate, iCPlace, name, secondName, householdCode, _selectedGender, birthDay, relative, birthPlace, nativeVillage, ethnic, religion, nationality, currentAddress, permanentAddress, educationLevel, technicalLevel, job, workPlace, _selectedMarital, livingStatus, note);
+                    DemographicAccess.UpdatePerson(_identityCode, person);
+                }
+                _demographicVM.Search();
                 TryCloseAsync();
+                
             }
         }
         public void Close()

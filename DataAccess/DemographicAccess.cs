@@ -26,6 +26,15 @@ namespace Household_Management_System.DataAccess
                 return output.ToList();
             }
         }
+        public static DemographicModel LoadPerson(string identityCode)
+        {
+            string query = @"SELECT * FROM Demographic WHERE IdentityCode='"+identityCode+"'";
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<DemographicModel>(query, new DynamicParameters());
+                return output.FirstOrDefault();
+            }
+        }
         public static void SavePerson(DemographicModel person)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
@@ -40,6 +49,13 @@ namespace Household_Management_System.DataAccess
                 var output = cnn.Query<string>("select Name from Demographic where IdentityCode='"+identityCode+"' and Name='"+name+"' and BirthDay='"+birthDay+"' and Gender='"+gender+"'", new DynamicParameters());
                 if (output.FirstOrDefault() == null) return false;
                 return true;
+            }
+        }
+        public static void UpdatePerson(string identityCode, DemographicModel person)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("update Demographic set ICDate = @ICDate, ICPlace = @ICPlace, Name = @Name, SecondName = @SecondName, Gender = @Gender, BirthDay = @BirthDay, Relative = @Relative, BirthPlace = @BirthPlace, NativeVillage = @NativeVillage, Ethnic = @Ethnic, Religion = @Religion, Nationality = @Nationality, CurrentAddress = @CurrentAddress,PermanentAddress = @PermanentAddress, EducationLevel = @EducationLevel, TechnicalLevel = @TechnicalLevel, Job = @Job, WorkPlace = @WorkPlace, MaritalStatus = @MaritalStatus, LivingStatus = @LivingStatus, Note = @Note where IdentityCode = '"+identityCode+"'", person);
             }
         }
         private static string LoadConnectionString(string id = "Default")

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Household_Management_System.ViewModels
@@ -17,6 +18,7 @@ namespace Household_Management_System.ViewModels
         private string _selectedVillage, textSearch = "";
         private DemographicModel _selectedPerson;
         private LocalPoliceModel currentUser;
+        private ShellViewModel _shell;
         public BindableCollection<string> VillageList { get; set; }
         public BindableCollection<DemographicModel> DemographicList { get; set; }
         public string SelectedVillage
@@ -55,8 +57,9 @@ namespace Household_Management_System.ViewModels
                 NotifyOfPropertyChange(() => SelectedPerson);
             }
         }
-        public DemographicViewModel(string username)
+        public DemographicViewModel(string username, ShellViewModel shell)
         {
+            _shell = shell;
             currentUser = LocalPoliceAccess.LoadPolice(username);
             listPeople = DemographicAccess.LoadPeople("", "");
             listVillage = new List<string>();
@@ -74,6 +77,18 @@ namespace Household_Management_System.ViewModels
             else listPeople = DemographicAccess.LoadPeople(textSearch, _selectedVillage);
             DemographicList = new BindableCollection<DemographicModel>(listPeople);
             NotifyOfPropertyChange(() => DemographicList);
+        }
+        public void ViewDetail()
+        {
+            if (_selectedPerson == null)
+            {
+                MessageBox.Show("Vui lòng chọn nhân khẩu để xem!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                IWindowManager manager = new WindowManager();
+                manager.ShowWindowAsync(new NewDemographicViewModel(2, _selectedPerson.IdentityCode, this), null, null);
+            }
         }
         public void ExecuteFilterView(KeyEventArgs keyArgs)
         {

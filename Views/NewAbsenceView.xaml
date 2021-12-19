@@ -21,10 +21,10 @@
         <StackPanel Margin="107,146,0,0" Orientation="Horizontal" VerticalAlignment="Top">
             <Label Content="Ngày sinh:" VerticalAlignment="Center" FontSize="16" />
             <Border Margin="6,0,0,0" BorderThickness="1" Width="120" BorderBrush="Black" Padding="0">
-                <DatePicker x:Name="BirthDay" FontSize="16" />
+                <DatePicker x:Name="BirthDay" FontSize="16" Padding="5 4 5 4"/>
             </Border>
-            <Label Content="Giới tính:" Margin="86,0,0,0" FontSize="16"/>
-            <ComboBox x:Name="Gender" Margin="6,0,0,0" BorderThickness="1" Width="217" Padding="0,4,5,4" FontSize="16"/>
+            <Label Content="Giới tính:" Margin="203,0,0,0" FontSize="16"/>
+            <ComboBox x:Name="Gender" Margin="6,0,0,0" BorderThickness="1" Width="100" Padding="5,4,5,4" FontSize="16"/>
         </StackPanel>
         <StackPanel Margin="72,189,0,0" Orientation="Horizontal" VerticalAlignment="Top">
             <Label Content="Nơi thường trú:" VerticalAlignment="Center" FontSize="16" Padding="4,2,4,0"/>
@@ -45,11 +45,11 @@
         <StackPanel Margin="51,364,0,0" Orientation="Horizontal" VerticalAlignment="Top">
             <Label Content="Tạm vắng từ ngày:"  VerticalAlignment="Top" FontSize="16" />
             <Border Margin="6,0,0,0" BorderThickness="1" Width="120" BorderBrush="Black" >
-                <DatePicker x:Name="FromDay" FontSize="16" />
+                <DatePicker x:Name="FromDay" FontSize="16" Padding="5 4 5 4"/>
             </Border>
             <Label Content="đến ngày:" Height="26" VerticalAlignment="Top" FontSize="16" Padding="4,2,4,0" Margin="175,0,0,0"/>
             <Border Margin="6,0,0,0" BorderThickness="1" Width="120" BorderBrush="Black" >
-                <DatePicker x:Name="ToDay" FontSize="16" />
+                <DatePicker x:Name="ToDay" FontSize="16" Padding="5 4 5 4"/>
             </Border>
         </StackPanel>
         <StackPanel Margin="72,407,0,0" Orientation="Horizontal" VerticalAlignment="Top">

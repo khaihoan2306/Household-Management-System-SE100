@@ -17,7 +17,6 @@ namespace Household_Management_System.ViewModels
         private string username;
         private string password;
         LocalPoliceModel currentUser;
-        private IEventAggregator _events;
 
         public string Username
         {
