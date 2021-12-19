@@ -19,7 +19,7 @@
                 <TextBox x:Name="TextSearch" Style="{x:Null}" TextWrapping="Wrap" Width="423" Background="White" BorderThickness="1" 
                      BorderBrush="Black" FontSize="18" VerticalContentAlignment="Center"
                      Focusable="True" />
-                <Button x:Name="Search" Style="{x:Null}" Background="#FF7EEA6C" BorderBrush="Black" Foreground="Black" Margin="20,0,0,0" Padding="10 5 10 5">
+                <Button x:Name="Search" Style="{StaticResource ButtonSearch}" BorderBrush="Black" Foreground="Black" Margin="20,0,0,0" Padding="10 5 10 5">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="../Assets/Images/search.png" Width="31" Height="31"/>
                         <TextBlock FontSize="18" Text="Tìm kiếm" Margin="0" Padding="0,3,0,0"/>
@@ -29,7 +29,7 @@
 
         </DockPanel>
         <DataGrid x:Name="DemographicList" Style="{x:Null}" AutoGenerateColumns="False"  SelectionUnit="FullRow" BorderThickness="1" BorderBrush="Black" Height="550" Margin="0 20 0 0" 
-                  IsReadOnly="True" SelectedItem="{Binding SelectedHousehold}" Background="White">
+                  IsReadOnly="True" SelectedItem="{Binding SelectedPerson}" Background="White">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="FontWeight"  Value="Bold" />
@@ -54,13 +54,13 @@
         </DataGrid>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 14 0 0">
-            <Button Style="{x:Null}" Background="{x:Null}" BorderBrush="Black" Foreground="Black" Padding="5" Margin="0 10 20 0">
+            <Button x:Name="ViewDetail" Style="{StaticResource CustomButton}" BorderBrush="Black" Foreground="Black" Padding="5" Margin="0 10 20 0">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="../Assets/Images/detail.png" Width="47" Height="47"/>
                     <TextBlock FontSize="20" Text="Xem chi tiết" Margin="5,0,0,0" Padding="0,10,0,0"/>
                 </StackPanel>
             </Button>
-            <Button Style="{x:Null}" Background="{x:Null}" BorderBrush="Black" Foreground="Black" Padding="5" Margin="0 10 0 0">
+            <Button Style="{StaticResource CustomButton}" BorderBrush="Black" Foreground="Black" Padding="5" Margin="0 10 0 0">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="../Assets/Images/print.png" Width="47" Height="47"/>
                     <TextBlock FontSize="20" Text="In danh sách" Margin="5,0,0,0" Padding="0,10,0,0"/>

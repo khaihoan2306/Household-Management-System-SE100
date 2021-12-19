@@ -22,6 +22,13 @@ namespace Household_Management_System.DataAccess
                 return output.FirstOrDefault();
             }
         }
+        public static void ChangePassword(string newPass, string username)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("update LocalPolice set Password='" + newPass + "' where Username='" + username + "'");
+            }
+        }
         private static string LoadConnectionString(string id = "Default")
         {
             string connectionString = "Data Source=";

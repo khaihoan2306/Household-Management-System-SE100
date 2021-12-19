@@ -99,6 +99,7 @@
     <Compile Include="DataAccess\HouseholdAccess.cs" />
     <Compile Include="DataAccess\HouseholdDetailAccess.cs" />
     <Compile Include="DataAccess\LocalPoliceAccess.cs" />
+    <Compile Include="DataAccess\MilitaryAccess.cs" />
     <Compile Include="DataAccess\ProvinceInfoAccess.cs" />
     <Compile Include="DataAccess\ResidenceAccess.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
@@ -107,13 +108,14 @@
     <Compile Include="Models\HouseholdModel.cs" />
     <Compile Include="Models\LocalAddressModel.cs" />
     <Compile Include="Models\LocalPoliceModel.cs" />
-    <Compile Include="Models\MilitaryServiceModel.cs" />
+    <Compile Include="Models\MilitaryModel.cs" />
     <Compile Include="Models\ResidenceModel.cs" />
     <Compile Include="ViewModels\AbsenceViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\DemographicViewModel.cs" />
     <Compile Include="ViewModels\HouseholdViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\MilitaryServiceViewModel.cs" />
     <Compile Include="ViewModels\NewAbsenceViewModel.cs" />
     <Compile Include="ViewModels\NewDemographicViewModel.cs" />
     <Compile Include="ViewModels\NewHouseholdViewModel.cs" />
@@ -269,6 +271,12 @@
   <ItemGroup>
     <Resource Include="Assets\Images\calendar.png" />
     <Resource Include="Assets\Images\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\key.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets')" />

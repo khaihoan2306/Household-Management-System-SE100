@@ -78,7 +78,10 @@ namespace Household_Management_System.ViewModels
         }
         public void Setting()
         {
-            
+            if (currentUser.Role == 2)
+                _shell.SettingChangeView();
+            else
+                _shell.SettingAdminChangeView();
         }
         public void Household()
         {
@@ -100,6 +103,10 @@ namespace Household_Management_System.ViewModels
         {
             IWindowManager manager = new WindowManager();
             manager.ShowWindowAsync(new NewDemographicViewModel(), null, null);
+        }
+        public void MilitaryService()
+        {
+            _shell.MilitaryServiceChangeView();
         }
     }
     
