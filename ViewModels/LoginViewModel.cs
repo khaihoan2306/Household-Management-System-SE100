@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Household_Management_System.ViewModels
 {
@@ -81,6 +82,13 @@ namespace Household_Management_System.ViewModels
             }
             else 
                 MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+        public void ExecuteFilterView(KeyEventArgs keyArgs)
+        {
+            if (keyArgs.Key == Key.Enter)
+            {
+                Login();
+            }
         }
     }
 }

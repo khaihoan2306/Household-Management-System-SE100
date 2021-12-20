@@ -3,8 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Household_Management_System.Views" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:cal="http://caliburnmicro.com"
-    x:Class="Household_Management_System.Views.HouseholdView"
+        xmlns:local="clr-namespace:Household_Management_System.Views" 
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
+        xmlns:cal="http://caliburnmicro.com"
+        x:Class="Household_Management_System.Views.HouseholdView"
         mc:Ignorable="d"
         Height="700" Width="1500">
     <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Height="700" Width="1440">
@@ -65,7 +67,7 @@
                 </StackPanel>
             </Button>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Style="{StaticResource CustomButton}" BorderBrush="Black" Foreground="Black" Padding="5" Margin="0 10 20 0">
+                <Button x:Name="ViewDetail" Style="{StaticResource CustomButton}" BorderBrush="Black" Foreground="Black" Padding="5" Margin="0 10 20 0">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="../Assets/Images/detail.png" Width="47" Height="47"/>
                         <TextBlock FontSize="20" Text="Xem chi tiết" Margin="5,0,0,0" Padding="0,10,0,0"/>

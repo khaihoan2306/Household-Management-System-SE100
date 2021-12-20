@@ -25,6 +25,13 @@ namespace Household_Management_System.DataAccess
                 return output.ToList();
             }
         }
+        public static void UpdateStatus(string identityCode, string status)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("update Military set Status='" + status + "' where IdentityCode='" + identityCode + "'");
+            }
+        }
         public static void UpdateMilitaryList()
         {
             List<PersonEnough> list, list2;

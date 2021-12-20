@@ -108,6 +108,10 @@ namespace Household_Management_System.ViewModels
         {
             _shell.MilitaryServiceChangeView();
         }
+        public void Transfer()
+        {
+            _shell.TransferChangeView();
+        }
     }
     
 }
