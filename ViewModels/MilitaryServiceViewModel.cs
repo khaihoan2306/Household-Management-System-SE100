@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Household_Management_System.ViewModels
 {
@@ -94,6 +95,18 @@ namespace Household_Management_System.ViewModels
             else listPeople = MilitaryAccess.LoadPeople(_selectedVillage, _selectedFilter);
             MilitaryList = new BindableCollection<MilitaryModel>(listPeople);
             NotifyOfPropertyChange(() => MilitaryList);
+        }
+        public void UpdateStatus()
+        {
+            if (_selectedPerson == null)
+            {
+                MessageBox.Show("Vui lòng chọn một đối tượng!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                IWindowManager manager = new WindowManager();
+                manager.ShowWindowAsync(new UpdateMilitaryViewModel(_selectedPerson.IdentityCode, this), null, null);
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Household_Management_System.ViewModels
 {
@@ -91,6 +92,27 @@ namespace Household_Management_System.ViewModels
                 {
                     AbsenceAccess.DeletePerson(_selectedPerson.IdentityCode);
                     Search();
+                }
+            }
+        }
+        public void ExecuteFilterView(KeyEventArgs keyArgs)
+        {
+            if (keyArgs.Key == Key.Enter)
+            {
+                Search();
+            }
+        }
+        public void Extend()
+        {
+            if (_selectedPerson == null)
+                MessageBox.Show("Vui lòng chọn một nhân khẩu để gia hạn!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+            else
+            {
+                MessageBoxResult mr = MessageBox.Show("Bạn có muốn gia hạn cho người này thêm 2 năm?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (mr == MessageBoxResult.Yes)
+                {
+                    DateTime extendDay = DateTime.Now.AddDays(730);
+                    AbsenceAccess.UpdatePerson(_selectedPerson.IdentityCode, extendDay.ToString("dd/MM/yyyy"));
                 }
             }
         }

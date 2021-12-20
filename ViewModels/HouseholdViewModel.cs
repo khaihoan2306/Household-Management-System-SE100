@@ -19,6 +19,7 @@ namespace Household_Management_System.ViewModels
         private string _selectedVillage, textSearch = "";
         private HouseholdModel _selectedHousehold;
         private LocalPoliceModel currentUser;
+        private ShellViewModel _shellVM;
         public BindableCollection<HouseholdModel> HouseholdList { get; set; }
         public BindableCollection<string> VillageList { get; set; }
         public HouseholdModel SelectedHousehold
@@ -57,8 +58,9 @@ namespace Household_Management_System.ViewModels
                 NotifyOfPropertyChange(() => TextSearch);
             }
         }
-        public HouseholdViewModel(string username)
+        public HouseholdViewModel(string username, ShellViewModel shellVM)
         {
+            _shellVM = shellVM;
             currentUser = LocalPoliceAccess.LoadPolice(username);
             listHousehold = HouseholdAccess.LoadHousehold();
             listVillage = new List<string>();
@@ -89,7 +91,7 @@ namespace Household_Management_System.ViewModels
                 MessageBox.Show("Vui lòng chọn một hộ khẩu để xóa!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             else
             {
-                if (HouseholdDetailAccess.CheckMemberHousehold(_selectedHousehold.HouseholdCode))
+                if (HouseholdAccess.CheckMemberHousehold(_selectedHousehold.HouseholdCode))
                     MessageBox.Show("Vui lòng cắt khẩu hết thành viên trong hộ!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                 else
                 {
@@ -107,6 +109,15 @@ namespace Household_Management_System.ViewModels
             if (keyArgs.Key == Key.Enter)
             {
                 Search();
+            }
+        }
+        public void ViewDetail()
+        {
+            if (SelectedHousehold == null)
+                MessageBox.Show("Vui lòng chọn một hộ khẩu!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+            else
+            {
+                _shellVM.HouseholdDetailChangeView(_selectedHousehold.HouseholdCode);
             }
         }
 

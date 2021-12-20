@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Household_Management_System.ViewModels
 {
@@ -92,6 +93,13 @@ namespace Household_Management_System.ViewModels
                     ResidenceAccess.DeletePerson(_selectedPerson.IdentityCode);
                     Search();
                 }
+            }
+        }
+        public void ExecuteFilterView(KeyEventArgs keyArgs)
+        {
+            if (keyArgs.Key == Key.Enter)
+            {
+                Search();
             }
         }
     }

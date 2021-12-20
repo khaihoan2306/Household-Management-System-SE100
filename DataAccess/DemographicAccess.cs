@@ -42,6 +42,13 @@ namespace Household_Management_System.DataAccess
                 cnn.Execute("insert into Demographic values (@IdentityCode, @ICDate, @ICPlace, @Name, @SecondName, @HouseholdCode, @Gender, @BirthDay, @Relative, @BirthPlace, @NativeVillage, @Ethnic, @Religion, @Nationality, @CurrentAddress, @PermanentAddress, @EducationLevel, @TechnicalLevel, @Job, @WorkPlace, @MaritalStatus, @LivingStatus, @Note)", person);
             }
         }
+        public static void DeletePerson(string identityCode)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("delete from Demographic where IdentityCode='"+identityCode+"'");
+            }
+        }
         public static bool CheckPerson(string identityCode, string name, string birthDay, string gender)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))

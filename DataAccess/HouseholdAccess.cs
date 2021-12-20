@@ -15,14 +15,20 @@ namespace Household_Management_System.DataAccess
     {
         public static List<HouseholdModel> LoadHousehold(string village = "", string text = "")
         {
-            string hostName = text.ToUpper();
-            text = text.ToLower();
+            
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
+                string hostName = "";
+                if (text != null)
+                {
+                    hostName = text.ToUpper();
+                    text = text.ToLower();
+                }
                 var output = cnn.Query<HouseholdModel>("select * from Household where Village like '%" + village + "%' and (HouseholdCode like '%"+text+"%' or HostName like '%"+hostName+"%' or Address like '%"+text+"%')", new DynamicParameters());
                 return output.ToList();
             }
         }
+       
         public static bool CheckHouseholdCode(string householdCode)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
@@ -46,6 +52,15 @@ namespace Household_Management_System.DataAccess
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 cnn.Execute("insert into Household values (@HouseholdCode, @HostName, @Address, @Village, @Ward, @District, @Province, @Note)", household);
+            }
+        }
+        public static bool CheckMemberHousehold(string householdCode)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<string>("select HouseholdCode from Demographic where HouseholdCode='" + householdCode + "'", new DynamicParameters());
+                if (output.FirstOrDefault() == null) return false;
+                return true;
             }
         }
         public static void DeleteHousehold(string householdCode)

@@ -17,9 +17,6 @@ namespace Household_Management_System.ViewModels
     {
         private string userInfo, exit = "Đăng xuất", _username;
         private LocalPoliceModel currentUser;
-        private readonly IEventAggregator _events;
-        private SettingViewModel _settingVM;
-        private SimpleContainer _container;
     
         public ShellViewModel(string username)
         {
@@ -77,7 +74,7 @@ namespace Household_Management_System.ViewModels
         }
         public void HouseholdChangeView()
         {
-            ActivateItemAsync(new HouseholdViewModel(_username));
+            ActivateItemAsync(new HouseholdViewModel(_username, this));
             exit = "Quay lại";
             NotifyOfPropertyChange(() => Exit);
         }
@@ -113,9 +110,21 @@ namespace Household_Management_System.ViewModels
         }
         public void SettingAdminChangeView()
         {
-            MessageBox.Show("Dang phat trien");
-            /*exit = "Quay lại";
-            NotifyOfPropertyChange(() => Exit);*/
+            ActivateItemAsync(new SettingAdminViewModel(_username));
+            exit = "Quay lại";
+            NotifyOfPropertyChange(() => Exit);
+        }
+        public void HouseholdDetailChangeView(string householdCode)
+        {
+            ActivateItemAsync(new HouseholdDetailViewModel(householdCode));
+            exit = "Quay lại";
+            NotifyOfPropertyChange(() => Exit);
+        }
+        public void TransferChangeView()
+        {
+            ActivateItemAsync(new TransferViewModel());
+            exit = "Quay lại";
+            NotifyOfPropertyChange(() => Exit);
         }
     }
 }
