@@ -112,6 +112,10 @@ namespace Household_Management_System.ViewModels
         {
             _shell.TransferChangeView();
         }
+        public void Report()
+        {
+            _shell.ReportChangeView();
+        }
     }
     
 }

@@ -3,6 +3,7 @@ using Household_Management_System.DataAccess;
 using Household_Management_System.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,9 +43,18 @@ namespace Household_Management_System.ViewModels
             {
                 _selectedHousehold = value;
                 NotifyOfPropertyChange(() => SelectedHousehold);
-                listMember = DemographicAccess.LoadPeople(_selectedHousehold.HouseholdCode);
-                MemberList = new BindableCollection<DemographicModel>(listMember);
-                NotifyOfPropertyChange(() => MemberList);
+                if (_selectedHousehold != null)
+                {
+                    listMember = DemographicAccess.LoadPeople(_selectedHousehold.HouseholdCode);
+                    for (int i = 0; i < listMember.Count; i++)
+                    {
+                        DateTime dtBirthDay = DateTime.ParseExact(listMember[i].BirthDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                        listMember[i].BirthDay = dtBirthDay.ToString("dd/MM/yyyy");
+                    }
+                    MemberList = new BindableCollection<DemographicModel>(listMember);
+                    NotifyOfPropertyChange(() => MemberList);
+                }
+                
             }
         }
         public string TextSearch
@@ -78,6 +88,11 @@ namespace Household_Management_System.ViewModels
                     DemographicAccess.DeletePerson(_selectedPerson.IdentityCode);
                     MessageBox.Show("Đã cắt khẩu thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                     listMember = DemographicAccess.LoadPeople(_selectedHousehold.HouseholdCode);
+                    for (int i = 0; i < listMember.Count; i++)
+                    {
+                        DateTime dtBirthDay = DateTime.ParseExact(listMember[i].BirthDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                        listMember[i].BirthDay = dtBirthDay.ToString("dd/MM/yyyy");
+                    }
                     MemberList = new BindableCollection<DemographicModel>(listMember);
                     NotifyOfPropertyChange(() => MemberList);
                 }

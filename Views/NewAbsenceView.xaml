@@ -8,7 +8,7 @@
         Title="NewAbsenceView" Height="670" Width="800" WindowStyle="None" ResizeMode="NoResize" BorderThickness="1">
     <Grid>
         <StackPanel Background="#7EEA6C" Width="800" Height="27" VerticalAlignment="Top">
-            <Label Content="Thêm mới nhân khẩu tạm vắng" Background="{x:Null}" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+            <Label x:Name="Title" Background="{x:Null}" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
         </StackPanel>
         <StackPanel Margin="109,60,0,0" Orientation="Horizontal" VerticalAlignment="Top">
             <Label Content="Họ và tên:" VerticalAlignment="Center" FontSize="16" Padding="4,2,4,0"/>

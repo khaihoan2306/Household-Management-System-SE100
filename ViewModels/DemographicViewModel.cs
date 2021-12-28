@@ -3,6 +3,7 @@ using Household_Management_System.DataAccess;
 using Household_Management_System.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,6 +63,11 @@ namespace Household_Management_System.ViewModels
             _shell = shell;
             currentUser = LocalPoliceAccess.LoadPolice(username);
             listPeople = DemographicAccess.LoadPeople("", "");
+            for (int i = 0; i < listPeople.Count; i++)
+            {
+                DateTime dtBirthDay = DateTime.ParseExact(listPeople[i].BirthDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                listPeople[i].BirthDay = dtBirthDay.ToString("dd/MM/yyyy");
+            }
             listVillage = new List<string>();
             listVillage.Add("-- Tất cả --");
             listVillage.AddRange(ProvinceInfoAccess.LoadVillageList(currentUser.ProvinceManage, currentUser.DistrictManage, currentUser.WardManage));
@@ -75,6 +81,11 @@ namespace Household_Management_System.ViewModels
             else if (_selectedVillage.Equals("-- Tất cả --"))
                 listPeople = DemographicAccess.LoadPeople(textSearch, "");
             else listPeople = DemographicAccess.LoadPeople(textSearch, _selectedVillage);
+            for (int i = 0; i < listPeople.Count; i++)
+            {
+                DateTime dtBirthDay = DateTime.ParseExact(listPeople[i].BirthDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                listPeople[i].BirthDay = dtBirthDay.ToString("dd/MM/yyyy");
+            }
             DemographicList = new BindableCollection<DemographicModel>(listPeople);
             NotifyOfPropertyChange(() => DemographicList);
         }

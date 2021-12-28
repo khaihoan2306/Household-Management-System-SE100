@@ -120,15 +120,23 @@ namespace Household_Management_System.ViewModels
         }
         public void Save()
         {
+            string currentDate = DateTime.Now.ToString("dd/MM/yyyy");
             string ward = ProvinceInfoAccess.LoadWardName(currentUser.ProvinceManage, currentUser.DistrictManage, currentUser.WardManage);
             string district = ProvinceInfoAccess.LoadDistrictName(currentUser.ProvinceManage, currentUser.DistrictManage, currentUser.WardManage);
             string province = ProvinceInfoAccess.LoadProvinceName(currentUser.ProvinceManage, currentUser.DistrictManage, currentUser.WardManage);
-            HouseholdModel household = new HouseholdModel(householdCode, hostName, address, _selectedVillage, ward, district, province, note);
+            HouseholdModel household = new HouseholdModel(householdCode, hostName, address, _selectedVillage, ward, district, province, note, currentDate);
             if (CanSave())
             {
                 HouseholdAccess.SaveHousehold(household);
                 MessageBox.Show("Đã thêm hộ khẩu thành công!", "Thông báo", MessageBoxButton.OK);
                 _householdVM.Search();
+                IWindowManager manager = new WindowManager();
+                NewDemographicViewModel ndvm = new NewDemographicViewModel();
+                ndvm.Name = hostName;
+                ndvm.HouseholdCode = householdCode;
+                ndvm.Relative = "Chủ hộ";
+                ndvm.PermanentAddress = address + ", " + _selectedVillage + ", " + ward + ", " + district + ", " + province;
+                manager.ShowWindowAsync(ndvm, null, null);
                 TryCloseAsync();
             }
         }

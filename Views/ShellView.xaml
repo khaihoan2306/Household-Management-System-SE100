@@ -16,24 +16,27 @@
                     </ItemsPanelTemplate>
                 </Menu.ItemsPanel>
                 <MenuItem Height="28" Header="_Hệ Thống" FontSize="14">
-                    <MenuItem Header="_Open"/>
-                    <MenuItem Header="_Close"/>
-                    <MenuItem Header="_Save"/>
+                    <MenuItem Header="Quản lý nhân khẩu" x:Name="DemographicChangeView" />
+                    <MenuItem Header="Quản lý hộ khẩu" x:Name="HouseholdChangeView" />
+                    <MenuItem Header="Chuyển khẩu" x:Name="TransferChangeView" />
+                    <Separator />
+                    <MenuItem Header="Đăng ký thường trú" x:Name="NewDemographicChangeView" />
+                    <MenuItem Header="Quản lý tạm vắng" x:Name="TemporaryAbsenceChangeView" />
+                    <MenuItem Header="Quản lý tạm trú" x:Name="TemporaryResidenceChangeView"/>
+                    <MenuItem Header="Quản lý NVQS" x:Name="MilitaryServiceChangeView"/>
+                    <Separator />
+                    <MenuItem Header="Đăng xuất" x:Name="LogOutMenu" Foreground="Red" />
                 </MenuItem>
-                <MenuItem Height="28" Header="_Danh mục" FontSize="14">
-                    <MenuItem Header="_Open"/>
-                    <MenuItem Header="_Close"/>
-                    <MenuItem Header="_Save"/>
-                </MenuItem>
-                <MenuItem Height="28" Header="Báo cáo" FontSize="14">
-                    <MenuItem Header="_Open"/>
-                    <MenuItem Header="_Close"/>
-                    <MenuItem Header="_Save"/>
-                </MenuItem>
+               
                 <MenuItem Height="28" Header="Trợ giúp" FontSize="14">
-                    <MenuItem Header="_Open"/>
-                    <MenuItem Header="_Close"/>
-                    <MenuItem Header="_Save"/>
+                    <MenuItem Header="Thông tin nhóm phát triển"/>
+                    <Separator/>
+                    <MenuItem Header="Lê Khải Hoàn"/>
+                    <MenuItem Header="Phạm Gia Bảo"/>
+                    <MenuItem Header="Nguyễn Trí Trường"/>
+                    <Separator/>
+                    <MenuItem Header="Email: khaihoan2306@gmail.com"/>
+                    <MenuItem Header="Số điện thoại: 0357105320"/>
                 </MenuItem>
                 <MenuItem x:Name="LogOut" Height="28" Header="{Binding Exit}" FontSize="14" HorizontalAlignment="Right" Foreground="Red"/>
 

@@ -88,7 +88,7 @@
             </StackPanel>
             <StackPanel Margin="123,619,0,0" Orientation="Horizontal" Height="123" VerticalAlignment="Top">
                 <Label Content="Ghi chú:" Height="26" VerticalAlignment="Center" FontSize="16" Padding="4,2,4,0"/>
-                <TextBox x:Name="Note" Margin="6,0,0,0" BorderThickness="1" Width="945" Height="123"/>
+                <TextBox x:Name="Note" Margin="6,0,0,0" BorderThickness="1" Width="945" FontSize="16" Height="123"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,740,0,0">
                 <Button x:Name="Save" Style="{x:Null}" Background="#FF87C5FF" BorderBrush="Black" Foreground="Black" Margin="486,0,0,0" Width="98" Height="40">

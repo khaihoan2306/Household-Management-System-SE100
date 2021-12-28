@@ -8,9 +8,9 @@ namespace Household_Management_System.Models
 {
     public class HouseholdModel
     {
-        private string householdCode = "", hostName="", address="", village="", ward="", district="", province="", note="";
+        private string householdCode = "", hostName="", address="", village="", ward="", district="", province="", note="", dateCreated="";
 
-        public HouseholdModel(string householdCode, string hostName, string address, string village, string ward, string district, string province, string note)
+        public HouseholdModel(string householdCode, string hostName, string address, string village, string ward, string district, string province, string note, string dateCreated)
         {
             this.HouseholdCode = householdCode;
             this.HostName = hostName;
@@ -20,6 +20,7 @@ namespace Household_Management_System.Models
             this.District = district;
             this.Province = province;
             this.Note = note;
+            this.DateCreated = dateCreated;
         }
 
         public string HouseholdCode { get => householdCode; set => householdCode = value; }
@@ -30,5 +31,6 @@ namespace Household_Management_System.Models
         public string District { get => district; set => district = value; }
         public string Province { get => province; set => province = value; }
         public string Note { get => note; set => note = value; }
+        public string DateCreated { get => dateCreated; set => dateCreated = value; }
     }
 }

@@ -3,6 +3,7 @@ using Household_Management_System.DataAccess;
 using Household_Management_System.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -93,6 +94,7 @@ namespace Household_Management_System.ViewModels
             else if (_selectedVillage.Equals("-- Tất cả --"))
                 listPeople = MilitaryAccess.LoadPeople("", _selectedFilter);
             else listPeople = MilitaryAccess.LoadPeople(_selectedVillage, _selectedFilter);
+            
             MilitaryList = new BindableCollection<MilitaryModel>(listPeople);
             NotifyOfPropertyChange(() => MilitaryList);
         }
