@@ -3,6 +3,7 @@ using Household_Management_System.DataAccess;
 using Household_Management_System.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,6 +61,11 @@ namespace Household_Management_System.ViewModels
         {
             currentUser = LocalPoliceAccess.LoadPolice(username);
             listPeople = AbsenceAccess.LoadPeople();
+            for (int i = 0; i < listPeople.Count; i++)
+            {
+                DateTime dtBirthDay = DateTime.ParseExact(listPeople[i].BirthDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                listPeople[i].BirthDay = dtBirthDay.ToString("dd/MM/yyyy");
+            }
             listVillage = new List<string>();
             listVillage.Add("-- Tất cả --");
             listVillage.AddRange(ProvinceInfoAccess.LoadVillageList(currentUser.ProvinceManage, currentUser.DistrictManage, currentUser.WardManage));
@@ -73,6 +79,11 @@ namespace Household_Management_System.ViewModels
             else if (_selectedVillage.Equals("-- Tất cả --"))
                 listPeople = AbsenceAccess.LoadPeople(textSearch, "");
             else listPeople = AbsenceAccess.LoadPeople(textSearch, _selectedVillage);
+            for (int i = 0; i < listPeople.Count; i++)
+            {
+                DateTime dtBirthDay = DateTime.ParseExact(listPeople[i].BirthDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                listPeople[i].BirthDay = dtBirthDay.ToString("dd/MM/yyyy");
+            }
             AbsenceList = new BindableCollection<AbsenceModel>(listPeople);
             NotifyOfPropertyChange(() => AbsenceList);
         }
@@ -112,8 +123,18 @@ namespace Household_Management_System.ViewModels
                 if (mr == MessageBoxResult.Yes)
                 {
                     DateTime extendDay = DateTime.Now.AddDays(730);
-                    AbsenceAccess.UpdatePerson(_selectedPerson.IdentityCode, extendDay.ToString("dd/MM/yyyy"));
+                    AbsenceAccess.UpdateDate(_selectedPerson.IdentityCode, extendDay.ToString("dd/MM/yyyy"));
                 }
+            }
+        }
+        public void ViewDetail()
+        {
+            if (_selectedPerson == null)
+                MessageBox.Show("Vui lòng chọn một đối tượng!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+            else
+            {
+                IWindowManager manager = new WindowManager();
+                manager.ShowWindowAsync(new NewAbsenceViewModel(_selectedPerson.IdentityCode), null, null);
             }
         }
     }

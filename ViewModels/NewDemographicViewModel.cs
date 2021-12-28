@@ -19,6 +19,7 @@ namespace Household_Management_System.ViewModels
         private int _code = 0;
         private string _identityCode;
         private DemographicViewModel _demographicVM;
+        private ResidenceViewModel _residenceVM;
      
         public BindableCollection<string> Gender { get; set; }
         public BindableCollection<string> Marital { get; set; }
@@ -50,8 +51,8 @@ namespace Household_Management_System.ViewModels
             }
             set
             {
-                DateTime dateTime = DateTime.ParseExact(value, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
-                iCDate = dateTime.ToString("dd/MM/yyyy");
+
+                iCDate = value;
                 NotifyOfPropertyChange(() => ICDate);
             }
         }
@@ -111,8 +112,7 @@ namespace Household_Management_System.ViewModels
             }
             set
             {
-                DateTime dateTime = DateTime.ParseExact(value, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
-                birthDay = dateTime.ToString("dd/MM/yyyy");
+                birthDay = value;
                 NotifyOfPropertyChange(() => BirthDay);
             }
         }
@@ -308,9 +308,10 @@ namespace Household_Management_System.ViewModels
                 NotifyOfPropertyChange(() => SelectedMarital);
             }
         }
-        public NewDemographicViewModel(int code = 0, string identityCode="", DemographicViewModel demographicVM = null)
+        public NewDemographicViewModel(int code = 0, string identityCode="", DemographicViewModel demographicVM = null, ResidenceViewModel residenceVM = null)
         {
             _demographicVM = demographicVM;
+            _residenceVM = residenceVM;
             _code = code;
             _identityCode = identityCode;
             AddListCombobox();
@@ -325,18 +326,14 @@ namespace Household_Management_System.ViewModels
         private void ViewDetailPerson()
         {
             DemographicModel person = DemographicAccess.LoadPerson(_identityCode);
-            DateTime dtBirthDay, dtICDate;
-            try { dtBirthDay = DateTime.ParseExact(person.BirthDay, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
-            catch { dtBirthDay = DateTime.ParseExact(person.BirthDay, "MM/dd/yyyy", CultureInfo.InvariantCulture); }
-            try { dtICDate = DateTime.ParseExact(person.ICDate, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
-            catch { dtICDate = DateTime.ParseExact(person.ICDate, "MM/dd/yyyy", CultureInfo.InvariantCulture); }
+           
             identityCode = person.IdentityCode;
             name = person.Name;
             secondName = person.SecondName;
             householdCode = person.HouseholdCode;    
             iCPlace = person.ICPlace;
-            birthDay = dtBirthDay.ToString("dd/MM/yyyy");
-            iCDate = dtICDate.ToString("dd/MM/yyyy");
+            birthDay = person.BirthDay;
+            iCDate = person.ICDate;
             relative = person.Relative;
             birthPlace = person.BirthPlace;
             nativeVillage = person.NativeVillage;
@@ -381,9 +378,10 @@ namespace Household_Management_System.ViewModels
         {
             if (CanSave()) 
             {
+                string currentDay = DateTime.Now.ToString("dd/MM/yyyy");
                 if (_code != 2)
                 {
-                    DemographicModel person = new DemographicModel(identityCode, iCDate, iCPlace, name, secondName, householdCode, _selectedGender, birthDay, relative, birthPlace, nativeVillage, ethnic, religion, nationality, currentAddress, permanentAddress, educationLevel, technicalLevel, job, workPlace, _selectedMarital, livingStatus, note);
+                    DemographicModel person = new DemographicModel(identityCode, iCDate, iCPlace, name, secondName, householdCode, _selectedGender, birthDay, relative, birthPlace, nativeVillage, ethnic, religion, nationality, currentAddress, permanentAddress, educationLevel, technicalLevel, job, workPlace, _selectedMarital, livingStatus, note, currentDay);
                     DemographicAccess.SavePerson(person);
                     if (_code == 1)
                     {
@@ -392,13 +390,23 @@ namespace Household_Management_System.ViewModels
                         ResidenceAccess.SavePerson(residence);
                     }
                     MessageBox.Show("Đã thêm nhân khẩu thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    
+                    
                 }
                 else
                 {
-                    DemographicModel person = new DemographicModel(identityCode, iCDate, iCPlace, name, secondName, householdCode, _selectedGender, birthDay, relative, birthPlace, nativeVillage, ethnic, religion, nationality, currentAddress, permanentAddress, educationLevel, technicalLevel, job, workPlace, _selectedMarital, livingStatus, note);
+                    DemographicModel person = new DemographicModel(identityCode, iCDate, iCPlace, name, secondName, householdCode, _selectedGender, birthDay, relative, birthPlace, nativeVillage, ethnic, religion, nationality, currentAddress, permanentAddress, educationLevel, technicalLevel, job, workPlace, _selectedMarital, livingStatus, note, currentDay);
                     DemographicAccess.UpdatePerson(_identityCode, person);
+                    
                 }
-                _demographicVM.Search();
+                if (_residenceVM != null)
+                {
+                    _residenceVM.Search();
+                }
+                if (_demographicVM != null)
+                {
+                    _demographicVM.Search();
+                }
                 TryCloseAsync();
                 
             }

@@ -3,6 +3,7 @@ using Household_Management_System.DataAccess;
 using Household_Management_System.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -166,32 +167,41 @@ namespace Household_Management_System.ViewModels
         {
             _householdCode = householdCode;
             listMember = DemographicAccess.LoadPeople(_householdCode);
+            for (int i = 0; i < listMember.Count; i++)
+            {
+                DateTime dtBirthDay = DateTime.ParseExact(listMember[i].BirthDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                listMember[i].BirthDay = dtBirthDay.ToString("dd/MM/yyyy");
+            }
             MemberList = new BindableCollection<DemographicModel>(listMember);
         }
         private void SetInfo()
         {
-            name = _selectedPerson.Name;
-            identityCode = _selectedPerson.IdentityCode;
-            birthDay = _selectedPerson.BirthDay;
-            birthPlace = _selectedPerson.BirthPlace;
-            gender = _selectedPerson.Gender;
-            ethnic = _selectedPerson.Ethnic;
-            job = _selectedPerson.Job;
-            relative = _selectedPerson.Relative;
-            workPlace = _selectedPerson.WorkPlace;
-            educationLevel = _selectedPerson.EducationLevel;
-            technicalLevel = _selectedPerson.TechnicalLevel;
-            NotifyOfPropertyChange(() => Name);
-            NotifyOfPropertyChange(() => IdentityCode);
-            NotifyOfPropertyChange(() => BirthDay);
-            NotifyOfPropertyChange(() => Gender);
-            NotifyOfPropertyChange(() => BirthPlace);
-            NotifyOfPropertyChange(() => Ethnic);
-            NotifyOfPropertyChange(() => Job);
-            NotifyOfPropertyChange(() => Relative);
-            NotifyOfPropertyChange(() => WorkPlace);
-            NotifyOfPropertyChange(() => EducationLevel);
-            NotifyOfPropertyChange(() => TechnicalLevel);
+            if (_selectedPerson != null)
+            {
+                name = _selectedPerson.Name;
+                identityCode = _selectedPerson.IdentityCode;
+                birthDay = _selectedPerson.BirthDay;
+                birthPlace = _selectedPerson.BirthPlace;
+                gender = _selectedPerson.Gender;
+                ethnic = _selectedPerson.Ethnic;
+                job = _selectedPerson.Job;
+                relative = _selectedPerson.Relative;
+                workPlace = _selectedPerson.WorkPlace;
+                educationLevel = _selectedPerson.EducationLevel;
+                technicalLevel = _selectedPerson.TechnicalLevel;
+                NotifyOfPropertyChange(() => Name);
+                NotifyOfPropertyChange(() => IdentityCode);
+                NotifyOfPropertyChange(() => BirthDay);
+                NotifyOfPropertyChange(() => Gender);
+                NotifyOfPropertyChange(() => BirthPlace);
+                NotifyOfPropertyChange(() => Ethnic);
+                NotifyOfPropertyChange(() => Job);
+                NotifyOfPropertyChange(() => Relative);
+                NotifyOfPropertyChange(() => WorkPlace);
+                NotifyOfPropertyChange(() => EducationLevel);
+                NotifyOfPropertyChange(() => TechnicalLevel);
+            }
+            
         }
         public void Transfer()
         {
@@ -205,6 +215,11 @@ namespace Household_Management_System.ViewModels
                     DemographicAccess.DeletePerson(_selectedPerson.IdentityCode);
                     MessageBox.Show("Đã cắt khẩu thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                     listMember = DemographicAccess.LoadPeople(_householdCode);
+                    for (int i = 0; i < listMember.Count; i++)
+                    {
+                        DateTime dtBirthDay = DateTime.ParseExact(listMember[i].BirthDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                        listMember[i].BirthDay = dtBirthDay.ToString("dd/MM/yyyy");
+                    }
                     MemberList = new BindableCollection<DemographicModel>(listMember);
                     NotifyOfPropertyChange(() => MemberList);
                 }

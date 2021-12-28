@@ -51,7 +51,7 @@ namespace Household_Management_System.DataAccess
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute("insert into Household values (@HouseholdCode, @HostName, @Address, @Village, @Ward, @District, @Province, @Note)", household);
+                cnn.Execute("insert into Household values (@HouseholdCode, @HostName, @Address, @Village, @Ward, @District, @Province, @Note, @DateCreated)", household);
             }
         }
         public static bool CheckMemberHousehold(string householdCode)

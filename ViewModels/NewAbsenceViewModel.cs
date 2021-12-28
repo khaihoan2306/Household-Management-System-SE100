@@ -13,11 +13,23 @@ namespace Household_Management_System.ViewModels
 {
     public class NewAbsenceViewModel : Screen
     {
-        private string name, identityCode, birthDay, permanentAddress, shelterAddress, currentAddress, reasonAbsence, fromDay, toDay, destination, note;
+        private string name, identityCode, birthDay, permanentAddress, shelterAddress, currentAddress, reasonAbsence, fromDay, toDay, destination, note, title;
         private List<string> listGender;
-        private string _selectedGender;
+        private string _selectedGender, _code;
 
         public BindableCollection<string> Gender { get; set; }
+        public string Title
+        {
+            get
+            {
+                return title;
+            }
+            set
+            {
+                title = value;
+                NotifyOfPropertyChange(() => Title);
+            }
+        }
         public string IdentityCode
         {
             get
@@ -162,12 +174,34 @@ namespace Household_Management_System.ViewModels
                 NotifyOfPropertyChange(() => SelectedGender);
             }
         }
-        public NewAbsenceViewModel()
+        public NewAbsenceViewModel(string code="")
         {
+            _code = code;
+            if (_code == "") title = "Thêm mới nhân khẩu tạm vắng";
+            else title = "Thông tin tạm vắng";
             listGender = new List<string>();
             listGender.Add("Nam");
             listGender.Add("Nữ");
             Gender = new BindableCollection<string>(listGender);
+            if (_code != "")
+            {
+                SetInfo(); 
+            }
+        }
+        private void SetInfo()
+        {
+            AbsenceModel a = AbsenceAccess.LoadPeople(_code, "")[0];
+            name = a.Name;
+            identityCode = a.IdentityCode;
+            birthDay = a.BirthDay;
+            permanentAddress = a.PermanentAddress;
+            shelterAddress = a.ShelterAddress;
+            currentAddress = a.CurrentAddress;
+            reasonAbsence = a.ReasonAbsence;
+            fromDay = a.FromDay;
+            toDay = a.ToDay;
+            destination = a.Destination;
+            note = a.Note;
         }
         public void Close()
         {
@@ -185,22 +219,28 @@ namespace Household_Management_System.ViewModels
         }
         public void Save()
         {
-            if (CanSave())
+            if (_code == "")
             {
-                if (DemographicAccess.CheckPerson(identityCode, name, birthDay, _selectedGender))
+                if (CanSave())
                 {
-                    DateTime dtBirthDay = DateTime.ParseExact(birthDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
-                    DateTime dtFromDay = DateTime.ParseExact(fromDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
-                    DateTime dtToDay = DateTime.ParseExact(toDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
-                    AbsenceModel person = new AbsenceModel(name, identityCode, dtBirthDay.ToString("dd/MM/yyyy"), _selectedGender, permanentAddress, shelterAddress, currentAddress, reasonAbsence, dtFromDay.ToString("dd/MM/yyyy"), dtToDay.ToString("dd/MM/yyyy"), destination, note);
-                    AbsenceAccess.SavePerson(person);
-                    MessageBox.Show("Đã thêm nhân khẩu tạm vắng thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-                    TryCloseAsync();
+                    if (DemographicAccess.CheckPerson(identityCode, name, birthDay, _selectedGender))
+                    {
+                        AbsenceModel person = new AbsenceModel(name, identityCode, birthDay, _selectedGender, permanentAddress, shelterAddress, currentAddress, reasonAbsence, fromDay, toDay, destination, note);
+                        AbsenceAccess.SavePerson(person);
+                        MessageBox.Show("Đã thêm nhân khẩu tạm vắng thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                        TryCloseAsync();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thông tin nhân khẩu không khớp với cơ sở dữ liệu!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Thông tin nhân khẩu không khớp với cơ sở dữ liệu!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+            }
+            else
+            {
+                AbsenceModel a = new AbsenceModel(name, identityCode, birthDay, _selectedGender, permanentAddress, shelterAddress, currentAddress, reasonAbsence, fromDay, toDay, destination, note);
+                AbsenceAccess.UpdatePerson(a);
+                TryCloseAsync();
             }
         }
     }

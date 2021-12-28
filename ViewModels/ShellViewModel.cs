@@ -72,6 +72,16 @@ namespace Household_Management_System.ViewModels
                 NotifyOfPropertyChange(() => Exit);
             } 
         }
+        public void LogOutMenu()
+        {
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn đăng xuất không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                TryCloseAsync();
+                IWindowManager manager = new WindowManager();
+                manager.ShowWindowAsync(new LoginViewModel(), null, null);
+            }
+        }
         public void HouseholdChangeView()
         {
             ActivateItemAsync(new HouseholdViewModel(_username, this));
@@ -125,6 +135,17 @@ namespace Household_Management_System.ViewModels
             ActivateItemAsync(new TransferViewModel());
             exit = "Quay lại";
             NotifyOfPropertyChange(() => Exit);
+        }
+        public void ReportChangeView()
+        {
+            ActivateItemAsync(new ReportViewModel(_username));
+            exit = "Quay lại";
+            NotifyOfPropertyChange(() => Exit);
+        }
+        public void NewDemographicChangeView()
+        {
+            IWindowManager manager = new WindowManager();
+            manager.ShowWindowAsync(new NewDemographicViewModel(), null, null);
         }
     }
 }

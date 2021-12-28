@@ -3,6 +3,7 @@ using Household_Management_System.DataAccess;
 using Household_Management_System.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -15,6 +16,7 @@ namespace Household_Management_System.ViewModels
     {
         private string name, identityCode, birthDay, phone, address, gender, position, provinceManage, districtManage, wardManage, oldPassword, newPassword, confirmPassword;
         private LocalPoliceModel currentUser, _selectedPolice;
+        private string _province, _district, _ward, _username;
         private List<LocalPoliceModel> listPolice;
         public BindableCollection<LocalPoliceModel> PoliceList { get; set; }
         public LocalPoliceModel SelectedPolice
@@ -185,29 +187,45 @@ namespace Household_Management_System.ViewModels
                 NotifyOfPropertyChange(() => ConfirmPassword);
             }
         }
-        public void Refresh(string province, string district, string ward)
+        public void RefreshInfo()
         {
-            listPolice = LocalPoliceAccess.LoadListPolice(province, district, ward);
+            listPolice = LocalPoliceAccess.LoadListPolice(_province, _district, _ward);
             PoliceList = new BindableCollection<LocalPoliceModel>(listPolice);
             NotifyOfPropertyChange(() => PoliceList);
+            SetInfo();
         }
         public SettingAdminViewModel(string username)
         {
-            currentUser = LocalPoliceAccess.LoadPolice(username);
-            string province = currentUser.ProvinceManage;
-            string district = currentUser.DistrictManage;
-            string ward = currentUser.WardManage;
-            Refresh(province, district, ward);
+            _username = username;
+            currentUser = LocalPoliceAccess.LoadPolice(_username);
+            _province = currentUser.ProvinceManage;
+            _district = currentUser.DistrictManage;
+            _ward = currentUser.WardManage;
+            RefreshInfo();
+            
+        }
+        public void SetInfo()
+        {
+            
+            currentUser = LocalPoliceAccess.LoadPolice(_username);
             name = currentUser.Name;
             birthDay = currentUser.BirthDay;
+            DateTime dtBirthDay = DateTime.ParseExact(birthDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+            birthDay = dtBirthDay.ToString("dd/MM/yyyy");
             gender = currentUser.Gender;
             phone = currentUser.Phone;
             address = currentUser.Address;
             position = currentUser.Position;
             identityCode = currentUser.IdentityCode;
-            provinceManage = ProvinceInfoAccess.LoadProvinceName(province, district, ward);
-            districtManage = ProvinceInfoAccess.LoadDistrictName(province, district, ward);
-            wardManage = ProvinceInfoAccess.LoadWardName(province, district, ward);
+            provinceManage = ProvinceInfoAccess.LoadProvinceName(_province, _district, _ward);
+            districtManage = ProvinceInfoAccess.LoadDistrictName(_province, _district, _ward);
+            wardManage = ProvinceInfoAccess.LoadWardName(_province, _district, _ward);
+            NotifyOfPropertyChange(() => Name);
+            NotifyOfPropertyChange(() => BirthDay);
+            NotifyOfPropertyChange(() => Gender);
+            NotifyOfPropertyChange(() => Phone);
+            NotifyOfPropertyChange(() => Address);
+            NotifyOfPropertyChange(() => Position);
         }
         private string ConvertToMD5(string input)
         {

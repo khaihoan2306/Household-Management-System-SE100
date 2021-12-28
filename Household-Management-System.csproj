@@ -58,6 +58,9 @@
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
+    <Reference Include="SautinSoft.PdfVision, Version=5.6.8.10, Culture=neutral, PublicKeyToken=9c847e093dd15dbf, processorArchitecture=MSIL">
+      <HintPath>packages\SautinSoft.PdfVision.5.6.8.10\lib\net47\SautinSoft.PdfVision.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -100,7 +103,9 @@
     <Compile Include="DataAccess\LocalPoliceAccess.cs" />
     <Compile Include="DataAccess\MilitaryAccess.cs" />
     <Compile Include="DataAccess\ProvinceInfoAccess.cs" />
+    <Compile Include="DataAccess\ReportAccess.cs" />
     <Compile Include="DataAccess\ResidenceAccess.cs" />
+    <Compile Include="Helpers\ExportToPDFHelper.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="Models\DemographicModel.cs" />
     <Compile Include="Models\AbsenceModel.cs" />
@@ -120,6 +125,7 @@
     <Compile Include="ViewModels\NewDemographicViewModel.cs" />
     <Compile Include="ViewModels\NewHouseholdViewModel.cs" />
     <Compile Include="ViewModels\NewPoliceViewModel.cs" />
+    <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\ResidenceViewModel.cs" />
     <Compile Include="ViewModels\SettingAdminViewModel.cs" />
     <Compile Include="ViewModels\SettingViewModel.cs" />
@@ -158,6 +164,9 @@
     </Compile>
     <Compile Include="Views\NewPoliceView.xaml.cs">
       <DependentUpon>NewPoliceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportView.xaml.cs">
+      <DependentUpon>ReportView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ResidenceView.xaml.cs">
       <DependentUpon>ResidenceView.xaml</DependentUpon>
@@ -248,6 +257,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NewPoliceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

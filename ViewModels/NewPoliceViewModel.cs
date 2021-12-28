@@ -190,8 +190,8 @@ namespace Household_Management_System.ViewModels
                     else
                     {
                         LocalPoliceModel police = new LocalPoliceModel(identityCode, name, birthDay, position, phone, address, currentUser.ProvinceManage, currentUser.DistrictManage, currentUser.WardManage, _selectedGender, 2, username, ConvertToMD5(password));
-                        //LocalPoliceAccess.SavePolice(police);
-                        MessageBox.Show(birthDay);
+                        LocalPoliceAccess.SavePolice(police);
+                       
                     }
                 }
             }
@@ -200,7 +200,7 @@ namespace Household_Management_System.ViewModels
                 LocalPoliceModel police = new LocalPoliceModel(identityCode, name, birthDay, position, phone, address, currentUser.ProvinceManage, currentUser.DistrictManage, currentUser.WardManage, _selectedGender, 2, _code, "");
                 LocalPoliceAccess.UpdatePolice(police);
             }
-            _settingVM.Refresh(currentUser.ProvinceManage, currentUser.DistrictManage, currentUser.WardManage);
+            _settingVM.RefreshInfo();
             TryCloseAsync();
         }
         public void Close()

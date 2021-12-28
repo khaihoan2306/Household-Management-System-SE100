@@ -8,9 +8,9 @@ namespace Household_Management_System.Models
 {
     public class DemographicModel
     {
-        private string identityCode, iCDate, iCPlace, name, secondName, householdCode, gender, birthDay, relative, birthPlace, nativeVillage, ethnic, religion, nationality, currentAddress, permanentAddress, educationLevel, technicalLevel, job, workPlace, maritalStatus, livingStatus, note;
+        private string identityCode, iCDate, iCPlace, name, secondName, householdCode, gender, birthDay, relative, birthPlace, nativeVillage, ethnic, religion, nationality, currentAddress, permanentAddress, educationLevel, technicalLevel, job, workPlace, maritalStatus, livingStatus, note, dateCreated;
 
-        public DemographicModel(string identityCode, string iCDate, string iCPlace, string name, string secondName, string householdCode, string gender, string birthDay, string relative, string birthPlace, string nativeVillage, string ethnic, string religion, string nationality, string currentAddress, string permanentAddress, string educationLevel, string technicalLevel, string job, string workPlace, string maritalStatus, string livingStatus, string note)
+        public DemographicModel(string identityCode, string iCDate, string iCPlace, string name, string secondName, string householdCode, string gender, string birthDay, string relative, string birthPlace, string nativeVillage, string ethnic, string religion, string nationality, string currentAddress, string permanentAddress, string educationLevel, string technicalLevel, string job, string workPlace, string maritalStatus, string livingStatus, string note, string dateCreated)
         {
             this.IdentityCode = identityCode;
             this.ICDate = iCDate;
@@ -35,6 +35,7 @@ namespace Household_Management_System.Models
             this.MaritalStatus = maritalStatus;
             this.LivingStatus = livingStatus;
             this.Note = note;
+            this.DateCreated = dateCreated;
         }
         public string IdentityCode { get => identityCode; set => identityCode = value; }
         public string ICDate { get => iCDate; set => iCDate = value; }
@@ -59,5 +60,6 @@ namespace Household_Management_System.Models
         public string MaritalStatus { get => maritalStatus; set => maritalStatus = value; }
         public string LivingStatus { get => livingStatus; set => livingStatus = value; }
         public string Note { get => note; set => note = value; }
+        public string DateCreated { get => dateCreated; set => dateCreated = value; }
     }
 }
