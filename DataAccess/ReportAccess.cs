@@ -147,7 +147,7 @@ namespace Household_Management_System.DataAccess
         }
         public static int PermanentHousehold(string from = "", string to = "")
         {
-            string query = @"SELECT COUNT(*) FROM Demographic WHERE LivingStatus='Thường trú' GROUP BY HouseholdCode";
+            string query = @"SELECT COUNT(DISTINCT HouseholdCode) FROM Demographic WHERE LivingStatus='Thường trú'";
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 var output = cnn.Query<int>(query, new DynamicParameters());
@@ -272,7 +272,7 @@ namespace Household_Management_System.DataAccess
         }
         public static int TemporaryHousehold(string from = "", string to = "")
         {
-            string query = @"SELECT COUNT(*) FROM Demographic WHERE LivingStatus='Tạm trú' GROUP BY HouseholdCode";
+            string query = @"SELECT COUNT(DISTINCT HouseholdCode) FROM Demographic WHERE LivingStatus='Tạm trú'";
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 var output = cnn.Query<int>(query, new DynamicParameters());
@@ -342,7 +342,7 @@ namespace Household_Management_System.DataAccess
                 for (int i = list.Count - 1; i >= 0; i--)
                 {
                     if (DateTime.Parse(from) <= DateTime.Parse(list[i].DateCreated) && list[i].LivingStatus == "Tạm trú"
-                    && DateTime.Parse(list[i].DateCreated) <= DateTime.Parse(to) && list[i].Gender == "Nam")
+                    && DateTime.Parse(list[i].DateCreated) <= DateTime.Parse(to) && list[i].Gender == "Nữ")
                     {
                         count++;
                     }
@@ -352,7 +352,7 @@ namespace Household_Management_System.DataAccess
             {
                 for (int i = list.Count - 1; i >= 0; i--)
                 {
-                    if (list[i].LivingStatus == "Tạm trú" && list[i].Gender == "Nam")
+                    if (list[i].LivingStatus == "Tạm trú" && list[i].Gender == "Nữ")
                     {
                         count++;
                     }
@@ -398,7 +398,7 @@ namespace Household_Management_System.DataAccess
 
         public static int AbsenceHousehold(string from = "", string to = "")
         {
-            string query = @"SELECT COUNT(*) FROM Demographic WHERE LivingStatus='Tạm vắng' GROUP BY HouseholdCode";
+            string query = @"SELECT COUNT(DISTINCT HouseholdCode) FROM Demographic WHERE LivingStatus='Tạm vắng'";
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 var output = cnn.Query<int>(query, new DynamicParameters());
@@ -468,7 +468,7 @@ namespace Household_Management_System.DataAccess
                 for (int i = list.Count - 1; i >= 0; i--)
                 {
                     if (DateTime.Parse(from) <= DateTime.Parse(list[i].DateCreated) && list[i].LivingStatus == "Tạm vắng"
-                    && DateTime.Parse(list[i].DateCreated) <= DateTime.Parse(to) && list[i].Gender == "Nam")
+                    && DateTime.Parse(list[i].DateCreated) <= DateTime.Parse(to) && list[i].Gender == "Nữ")
                     {
                         count++;
                     }
@@ -478,7 +478,7 @@ namespace Household_Management_System.DataAccess
             {
                 for (int i = list.Count - 1; i >= 0; i--)
                 {
-                    if (list[i].LivingStatus == "Tạm vắng" && list[i].Gender == "Nam")
+                    if (list[i].LivingStatus == "Tạm vắng" && list[i].Gender == "Nữ")
                     {
                         count++;
                     }
