@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Household_Management_System.DataAccess
 {
@@ -58,11 +59,12 @@ namespace Household_Management_System.DataAccess
         }
         private static string LoadConnectionString(string id = "Default")
         {
-            string connectionString = "Data Source=";
-            string dir = Environment.CurrentDirectory;
-            dir = dir.Remove(dir.Length - 9, 9);
-            dir += "HouseholdDB.db";
-            connectionString += dir + ";Version=3;";
+            string CurrentDirectory = System.Environment.CurrentDirectory;
+            while (CurrentDirectory.Contains("bin"))
+            {
+                CurrentDirectory = Directory.GetParent(CurrentDirectory).FullName;
+            }
+            string connectionString = @"Data Source=" + CurrentDirectory + @"\HouseholdDB.db;Version=3;";
             return connectionString;
         }
     }
