@@ -1,8 +1,8 @@
 # Household-Management-System-SE100
 Members:
-Le Khai Hoan\n
-Pham Gia Bao\n
-Nguyen Tri Truong\n
+Le Khai Hoan        
+Pham Gia Bao        
+Nguyen Tri Truong         
 ===============================================
 The software must meet the following requirements:
 	The basic functions of household registration software such as household registration management, temporary residence management, temporary absence management, transfering household, military service management, etc. have been completed in terms of analytical design to complete the function.
