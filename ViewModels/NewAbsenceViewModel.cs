@@ -16,6 +16,7 @@ namespace Household_Management_System.ViewModels
         private string name, identityCode, birthDay, permanentAddress, shelterAddress, currentAddress, reasonAbsence, fromDay, toDay, destination, note, title;
         private List<string> listGender;
         private string _selectedGender, _code;
+        private AbsenceViewModel _absenceVM;
 
         public BindableCollection<string> Gender { get; set; }
         public string Title
@@ -174,8 +175,9 @@ namespace Household_Management_System.ViewModels
                 NotifyOfPropertyChange(() => SelectedGender);
             }
         }
-        public NewAbsenceViewModel(string code="")
+        public NewAbsenceViewModel(string code="", AbsenceViewModel absenceVM=null)
         {
+            _absenceVM = absenceVM;
             _code = code;
             if (_code == "") title = "Thêm mới nhân khẩu tạm vắng";
             else title = "Thông tin tạm vắng";
@@ -228,6 +230,7 @@ namespace Household_Management_System.ViewModels
                         AbsenceModel person = new AbsenceModel(name, identityCode, birthDay, _selectedGender, permanentAddress, shelterAddress, currentAddress, reasonAbsence, fromDay, toDay, destination, note);
                         AbsenceAccess.SavePerson(person);
                         MessageBox.Show("Đã thêm nhân khẩu tạm vắng thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                        _absenceVM.Search();
                         TryCloseAsync();
                     }
                     else

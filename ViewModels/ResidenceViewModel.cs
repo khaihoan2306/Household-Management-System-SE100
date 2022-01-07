@@ -64,7 +64,9 @@ namespace Household_Management_System.ViewModels
             for (int i = 0; i < listPeople.Count; i++)
             {
                 DateTime dtBirthDay = DateTime.ParseExact(listPeople[i].BirthDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                DateTime dtArrivalDay = DateTime.ParseExact(listPeople[i].ArrivalDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
                 listPeople[i].BirthDay = dtBirthDay.ToString("dd/MM/yyyy");
+                listPeople[i].ArrivalDay = dtArrivalDay.ToString("dd/MM/yyyy");
             }
             listVillage = new List<string>();
             listVillage.Add("-- Tất cả --");
@@ -82,7 +84,9 @@ namespace Household_Management_System.ViewModels
             for (int i = 0; i < listPeople.Count; i++)
             {
                 DateTime dtBirthDay = DateTime.ParseExact(listPeople[i].BirthDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                DateTime dtArrivalDay = DateTime.ParseExact(listPeople[i].ArrivalDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
                 listPeople[i].BirthDay = dtBirthDay.ToString("dd/MM/yyyy");
+                listPeople[i].ArrivalDay = dtArrivalDay.ToString("dd/MM/yyyy");
             }
             ResidenceList = new BindableCollection<ResidenceModel>(listPeople);
             NotifyOfPropertyChange(() => ResidenceList);
@@ -94,11 +98,11 @@ namespace Household_Management_System.ViewModels
         }
         public void Delete()
         {
-            if (SelectedPerson == null)
+            if (_selectedPerson == null)
                 MessageBox.Show("Vui lòng chọn một nhân khẩu để xóa!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             else
             {
-                MessageBoxResult mr = MessageBox.Show("Bạn có muốn xóa nhân khẩu tạm vắng này?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult mr = MessageBox.Show("Bạn có muốn xóa nhân khẩu tạm trú này?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (mr == MessageBoxResult.Yes)
                 {
                     ResidenceAccess.DeletePerson(_selectedPerson.IdentityCode);

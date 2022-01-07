@@ -17,7 +17,7 @@ namespace Household_Management_System.ViewModels
         private List<string> listGender, listMarital;
         private string _selectedGender, _selectedMarital;
         private int _code = 0;
-        private string _identityCode;
+        private string _identityCode, title;
         private DemographicViewModel _demographicVM;
         private ResidenceViewModel _residenceVM;
      
@@ -27,8 +27,12 @@ namespace Household_Management_System.ViewModels
         {
             get
             {
-                if (_code == 2) return "Thông tin nhân khẩu";
-                else return "Thêm mới nhân khẩu";
+                return title;
+            }
+            set
+            {
+                title = value;
+                NotifyOfPropertyChange(() => Title);
             }
         }
         public string IdentityCode
@@ -314,11 +318,24 @@ namespace Household_Management_System.ViewModels
             _residenceVM = residenceVM;
             _code = code;
             _identityCode = identityCode;
+            
             AddListCombobox();
-            if (_code == 0) livingStatus = "Thường trú";
-            else if (_code == 1) livingStatus = "Tạm trú";
+            if (_code == 0)
+            {
+                livingStatus = "Thường trú";
+                title = "Thêm mới nhân khẩu";
+                NotifyOfPropertyChange(() => Title);
+            }
+            else if (_code == 1)
+            {
+                livingStatus = "Tạm trú";
+                title = "Thêm mới nhân khẩu";
+                NotifyOfPropertyChange(() => Title);
+            }
             else if (_code == 2)
             {
+                title = "Thông tin nhân khẩu";
+                NotifyOfPropertyChange(() => Title);
                 ViewDetailPerson();
             }
             
@@ -386,7 +403,7 @@ namespace Household_Management_System.ViewModels
                     if (_code == 1)
                     {
                         string shelterAddress = HouseholdAccess.LoadAddress(householdCode);
-                        ResidenceModel residence = new ResidenceModel(identityCode, name, birthDay, _selectedGender, permanentAddress, shelterAddress, DateTime.Now.ToString("M/d/yyyy HH:mm:ss"), "");
+                        ResidenceModel residence = new ResidenceModel(identityCode, name, birthDay, _selectedGender, permanentAddress, shelterAddress, DateTime.Now.ToString("M/d/yyyy hh:mm:ss tt"), "");
                         ResidenceAccess.SavePerson(residence);
                     }
                     MessageBox.Show("Đã thêm nhân khẩu thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -397,6 +414,11 @@ namespace Household_Management_System.ViewModels
                 {
                     DemographicModel person = new DemographicModel(identityCode, iCDate, iCPlace, name, secondName, householdCode, _selectedGender, birthDay, relative, birthPlace, nativeVillage, ethnic, religion, nationality, currentAddress, permanentAddress, educationLevel, technicalLevel, job, workPlace, _selectedMarital, livingStatus, note, currentDay);
                     DemographicAccess.UpdatePerson(_identityCode, person);
+                    if (livingStatus == "Tạm trú")
+                    {
+                        ResidenceModel residence = new ResidenceModel(identityCode, name, birthDay, _selectedGender, permanentAddress, currentAddress, DateTime.Now.ToString("M/d/yyyy hh:mm:ss tt"), "");
+                        ResidenceAccess.UpdatePerson(residence);
+                    }
                     
                 }
                 if (_residenceVM != null)

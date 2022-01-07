@@ -17,7 +17,7 @@ namespace Household_Management_System.DataAccess
     {
         public static List<MilitaryModel> LoadPeople(string village = "", string status = "")
         {
-            string query = @"SELECT Military.IdentityCode, Military.Name, Military.Gender, Military.BirthDay, Military.Ethnic, Military.PermanentAddress, Military.Status, Military.Note
+            string query = @"SELECT Military.IdentityCode, Military.Name, Military.Gender, Military.BirthDay, Military.Ethnic, Military.CurrentAddress, Military.Status, Military.Note
                             FROM Military, Household, Demographic 
                             WHERE Military.Status like '%"+status+"%' and Military.IdentityCode = Demographic.IdentityCode and Household.HouseholdCode = Demographic.HouseholdCode and Household.Village like '%" + village + "%'";
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
@@ -43,7 +43,7 @@ namespace Household_Management_System.DataAccess
             string pastDay = currentDay.Substring(0, 6) + pastYear;
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<PersonEnough>("select Name, Gender, IdentityCode, BirthDay, Ethnic, PermanentAddress from Demographic", new DynamicParameters());
+                var output = cnn.Query<PersonEnough>("select Name, Gender, IdentityCode, BirthDay, Ethnic, CurrentAddress from Demographic", new DynamicParameters());
                 list = output.ToList();
                 list2 = output.ToList();
             }
@@ -75,7 +75,7 @@ namespace Household_Management_System.DataAccess
                     var output = cnn.Query<string>("select IdentityCode from Military where IdentityCode='" + list[i].IdentityCode + "'");
                     if (output.FirstOrDefault() == null)
                     {
-                        cnn.Execute("insert into Military values (@IdentityCode, @Name, @Gender, @BirthDay, @Ethnic, @PermanentAddress, 'Đủ tuổi gia nhập', '')", list[i]);
+                        cnn.Execute("insert into Military values (@IdentityCode, @Name, @Gender, @BirthDay, @Ethnic, @CurrentAddress, 'Đủ tuổi gia nhập', '')", list[i]);
                     }
                 }
                 for (int i = 0; i < list2.Count; i++)
@@ -102,16 +102,16 @@ namespace Household_Management_System.DataAccess
         }
         private class PersonEnough
         {
-            private string name, gender, identityCode, birthDay, ethnic, permanentAddress;
+            private string name, gender, identityCode, birthDay, ethnic, currentAddress;
 
-            public PersonEnough(string name, string gender, string identityCode, string birthDay, string ethnic, string permanentAddress)
+            public PersonEnough(string name, string gender, string identityCode, string birthDay, string ethnic, string currentAddress)
             {
                 this.Name = name;
                 this.Gender = gender;
                 this.IdentityCode = identityCode;
                 this.BirthDay = birthDay;
                 this.Ethnic = ethnic;
-                this.PermanentAddress = permanentAddress;
+                this.CurrentAddress = currentAddress;
             }
 
             public string Name { get => name; set => name = value; }
@@ -119,7 +119,7 @@ namespace Household_Management_System.DataAccess
             public string IdentityCode { get => identityCode; set => identityCode = value; }
             public string BirthDay { get => birthDay; set => birthDay = value; }
             public string Ethnic { get => ethnic; set => ethnic = value; }
-            public string PermanentAddress { get => permanentAddress; set => permanentAddress = value; }
+            public string CurrentAddress { get => currentAddress; set => currentAddress = value; }
         }
     }
 }

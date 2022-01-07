@@ -64,7 +64,11 @@ namespace Household_Management_System.ViewModels
             for (int i = 0; i < listPeople.Count; i++)
             {
                 DateTime dtBirthDay = DateTime.ParseExact(listPeople[i].BirthDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                DateTime dtFromDay = DateTime.ParseExact(listPeople[i].FromDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                DateTime dtToDay = DateTime.ParseExact(listPeople[i].ToDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
                 listPeople[i].BirthDay = dtBirthDay.ToString("dd/MM/yyyy");
+                listPeople[i].FromDay = dtFromDay.ToString("dd/MM/yyyy");
+                listPeople[i].ToDay = dtToDay.ToString("dd/MM/yyyy");
             }
             listVillage = new List<string>();
             listVillage.Add("-- Tất cả --");
@@ -82,7 +86,11 @@ namespace Household_Management_System.ViewModels
             for (int i = 0; i < listPeople.Count; i++)
             {
                 DateTime dtBirthDay = DateTime.ParseExact(listPeople[i].BirthDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                DateTime dtFromDay = DateTime.ParseExact(listPeople[i].FromDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                DateTime dtToDay = DateTime.ParseExact(listPeople[i].ToDay, "M/d/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
                 listPeople[i].BirthDay = dtBirthDay.ToString("dd/MM/yyyy");
+                listPeople[i].FromDay = dtFromDay.ToString("dd/MM/yyyy");
+                listPeople[i].ToDay = dtToDay.ToString("dd/MM/yyyy");
             }
             AbsenceList = new BindableCollection<AbsenceModel>(listPeople);
             NotifyOfPropertyChange(() => AbsenceList);
@@ -90,7 +98,7 @@ namespace Household_Management_System.ViewModels
         public void NewAbsence()
         {
             IWindowManager manager = new WindowManager();
-            manager.ShowWindowAsync(new NewAbsenceViewModel(), null, null);
+            manager.ShowWindowAsync(new NewAbsenceViewModel("", this), null, null);
         }
         public void Delete()
         {
@@ -123,7 +131,8 @@ namespace Household_Management_System.ViewModels
                 if (mr == MessageBoxResult.Yes)
                 {
                     DateTime extendDay = DateTime.Now.AddDays(730);
-                    AbsenceAccess.UpdateDate(_selectedPerson.IdentityCode, extendDay.ToString("dd/MM/yyyy"));
+                    AbsenceAccess.UpdateDate(_selectedPerson.IdentityCode, extendDay.ToString("M/d/yyyy hh:mm:ss tt"));
+                    Search();
                 }
             }
         }
