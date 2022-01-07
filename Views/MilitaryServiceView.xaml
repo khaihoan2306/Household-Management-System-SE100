@@ -46,7 +46,7 @@
                 <DataGridTextColumn Width="auto" Header="CMND/CCCD" Binding="{Binding Path=IdentityCode}"/>
                 <DataGridTextColumn Width="auto" Header="Ngày sinh" Binding="{Binding Path=BirthDay}"/>
                 <DataGridTextColumn Width="auto" Header="Dân tộc" Binding="{Binding Path=Ethnic}"/>
-                <DataGridTextColumn Width="auto" Header="Nơi thường trú" Binding="{Binding Path=PermanentAddress}"/>
+                <DataGridTextColumn Width="auto" Header="Nơi ở hiện tại" Binding="{Binding Path=CurrentAddress}"/>
                 <DataGridTextColumn Width="auto" Header="Tình trạng" Binding="{Binding Path=Status}"/>
                 <DataGridTextColumn Width="*" Header="Ghi chú" Binding="{Binding Path=Note}"/>
             </DataGrid.Columns>

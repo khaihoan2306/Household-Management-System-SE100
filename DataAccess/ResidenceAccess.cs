@@ -34,6 +34,14 @@ namespace Household_Management_System.DataAccess
                 cnn.Execute("update Demographic set LivingStatus='Tạm trú' where IdentityCode='" + person.IdentityCode + "'");
             }
         }
+        public static void UpdatePerson(ResidenceModel person)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                
+                cnn.Execute("update Residence set Name=@Name, BirthDay=@BirthDay, Gender=@Gender, PermanentAddress=@PermanentAddress, ShelterAddress=@ShelterAddress, ArrivalDay=@ArrivalDay, Note=@Note where IdentityCode=@IdentityCode", person);
+            }
+        }
         public static void DeletePerson(string identityCode)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))

@@ -28,11 +28,11 @@
                     </DataGrid.ColumnHeaderStyle>
 
                     <DataGrid.Columns>
-                        <DataGridTextColumn Width="*" FontSize="14" Header="Họ và tên" Binding="{Binding Path=Name}" />
-                        <DataGridTextColumn Width="*" FontSize="14" Header="CMND/CCCD" Binding="{Binding Path=IdentityCode}" />
-                        <DataGridTextColumn Width="*" FontSize="14" Header="Giới tính" Binding="{Binding Path=Gender}" />
-                        <DataGridTextColumn Width="*" FontSize="14" Header="Quan hệ" Binding="{Binding Path=Relative}" />
-                        <DataGridTextColumn Width="*" FontSize="14" Header="Ngày sinh" Binding="{Binding Path=BirthDay}" />
+                        <DataGridTextColumn Width="auto" FontSize="14" Header="Họ và tên" Binding="{Binding Path=Name}" />
+                        <DataGridTextColumn Width="auto" FontSize="14" Header="CMND/CCCD" Binding="{Binding Path=IdentityCode}" />
+                        <DataGridTextColumn Width="auto" FontSize="14" Header="Giới tính" Binding="{Binding Path=Gender}" />
+                        <DataGridTextColumn Width="auto" FontSize="14" Header="Quan hệ" Binding="{Binding Path=Relative}" />
+                        <DataGridTextColumn Width="auto" FontSize="14" Header="Ngày sinh" Binding="{Binding Path=BirthDay}" />
                     </DataGrid.Columns>
 
                 </DataGrid>
@@ -79,7 +79,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0 20 0 0" HorizontalAlignment="Right">
                     <Label Content="Nơi làm việc:" VerticalAlignment="Center" FontSize="18" Padding="4,2,4,0"/>
-                    <TextBlock x:Name="WorkPlace" Margin="6,0,0,0" Width="300" FontSize="18" Padding="5" />
+                    <TextBlock x:Name="WorkPlace"  Margin="6,0,0,0" TextWrapping="Wrap" Width="300" FontSize="18" Padding="5" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0 20 0 0" HorizontalAlignment="Right">
                     <Label Content="Trình độ học vấn:" VerticalAlignment="Center" FontSize="18" Padding="4,2,4,0"/>

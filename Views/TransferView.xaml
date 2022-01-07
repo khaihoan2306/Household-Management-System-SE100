@@ -70,10 +70,10 @@
 
                     <DataGrid.Columns>
                         <DataGridTextColumn Width="*" FontSize="14" Header="Họ và tên" Binding="{Binding Path=Name}" />
-                        <DataGridTextColumn Width="*" FontSize="14" Header="CMND/CCCD" Binding="{Binding Path=IdentityCode}" />
-                        <DataGridTextColumn Width="*" FontSize="14" Header="Giới tính" Binding="{Binding Path=Gender}" />
-                        <DataGridTextColumn Width="*" FontSize="14" Header="Quan hệ" Binding="{Binding Path=Relative}" />
-                        <DataGridTextColumn Width="*" FontSize="14" Header="Ngày sinh" Binding="{Binding Path=BirthDay}" />
+                        <DataGridTextColumn Width="auto" FontSize="14" Header="CMND/CCCD" Binding="{Binding Path=IdentityCode}" />
+                        <DataGridTextColumn Width="auto" FontSize="14" Header="Giới tính" Binding="{Binding Path=Gender}" />
+                        <DataGridTextColumn Width="auto" FontSize="14" Header="Quan hệ" Binding="{Binding Path=Relative}" />
+                        <DataGridTextColumn Width="auto" FontSize="14" Header="Ngày sinh" Binding="{Binding Path=BirthDay}" />
                     </DataGrid.Columns>
 
                 </DataGrid>

@@ -43,8 +43,12 @@ namespace Household_Management_System.DataAccess
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<string>("select Address from Household where HouseholdCode='" + householdCode + "'", new DynamicParameters());
-                return output.FirstOrDefault();
+                var address = cnn.Query<string>("select Address from Household where HouseholdCode='" + householdCode + "'", new DynamicParameters());
+                var village = cnn.Query<string>("select Village from Household where HouseholdCode='" + householdCode + "'", new DynamicParameters());
+                var ward = cnn.Query<string>("select Ward from Household where HouseholdCode='" + householdCode + "'", new DynamicParameters());
+                var district = cnn.Query<string>("select District from Household where HouseholdCode='" + householdCode + "'", new DynamicParameters());
+                var province = cnn.Query<string>("select Province from Household where HouseholdCode='" + householdCode + "'", new DynamicParameters());
+                return address.FirstOrDefault() + ", " + village.FirstOrDefault() + ", " + ward.FirstOrDefault() + ", " + district.FirstOrDefault() + ", " + province.FirstOrDefault();
             }
         }
         public static void SaveHousehold(HouseholdModel household)

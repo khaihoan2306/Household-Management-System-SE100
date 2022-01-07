@@ -12,7 +12,7 @@
         </StackPanel>
         <StackPanel Margin="109,60,0,0" Orientation="Horizontal" VerticalAlignment="Top">
             <Label Content="Họ và tên:" VerticalAlignment="Center" FontSize="16" Padding="4,2,4,0"/>
-            <TextBox x:Name="Name" Margin="6,0,0,0" BorderThickness="1" Width="500" FontSize="16"/>
+            <TextBox x:Name="Name" Margin="6,0,0,0" BorderThickness="1" Width="500" FontSize="16" CharacterCasing="Upper"/>
         </StackPanel>
         <StackPanel Margin="62,103,0,0" Orientation="Horizontal" VerticalAlignment="Top">
             <Label Content="Số CMND/CCCD:" VerticalAlignment="Center" FontSize="16" Padding="4,2,4,0"/>
